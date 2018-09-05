@@ -1,13 +1,17 @@
-/** Navbar **/
+/**
+ * Cascading stylesheet for the base html file
+ * @author Team JID-8135
+ * @version 0.1
+*/
+
 .active {
-	background-color: #262626 !important;
+	background-color: darkgoldenrod !important;
 	pointer-events: none;
 	cursor: default;
-	color: white !important;
 }
 
 .nav a:link {
-	color: black;
+	color: white;
 	background-color: transparent;
 	text-decoration: none;
 	-webkit-user-select: none;
@@ -21,7 +25,7 @@
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: #EDB316;
+	background-color: #333333;
 	top: 0%;
 	width: 100%;
 }
@@ -32,14 +36,12 @@
 
 .nav li a {
 	display: block;
-	color: black;
+	color: white;
 	text-align: center;
-	padding: 12px;
+	padding: 16px;
 	text-decoration: none;
 }
 
 .nav li a:hover:not(.active) {
-	background-color: #262626;
-	color: white;
+	background-color: #111111;
 }
-/** /Navbar **/
