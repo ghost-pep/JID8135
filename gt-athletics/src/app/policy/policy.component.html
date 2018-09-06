@@ -1,100 +1,107 @@
-<!-- Navbar -->
-<div class = "nav">
-	<ul>
-		<li><a class="inactive" href="">Home</a></li>
-		<li><a class="inactive" href="">About</a></li>
-		<li><a class="active" href="">Policies</a></li>
-		<li><a class="inactive" href="">HR Forms</a></li>
-		<li><a class="inactive" href="">Podcasts</a></li>
-		<li><a class="inactive" href="">Contact</a></li>
-	</ul>
-</div>
-<!-- /Navbar -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <!-- Navbar -->
+    <div class = "nav">
+    	<ul>
+    		<li><a class="inactive" href="">Home</a></li>
+    		<li><a class="inactive" href="">About</a></li>
+    		<li><a class="active" href="">Policies</a></li>
+    		<li><a class="inactive" href="">HR Forms</a></li>
+    		<li><a class="inactive" href="">Podcasts</a></li>
+    		<li><a class="inactive" href="">Contact</a></li>
+    	</ul>
+    </div>
+    <!-- /Navbar -->
 
-<!--Jumbotron-->
-<!--<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="h1-reponsive mb-4 mt-2 blue-text font-bold">Fluid jumbotron</h1>
-        <p class="lead">This is the policy component</p>
-    </div>
-</div>-->
-<!--/Jumbotron-->
-<div class="row" style="margin: 2% 4% 2% 4%">
-  <div class="col col-lg-4 col-med-4 col-sm-4" id="border">   <!-- Column 1 -->
-    <table>
-      <thead>
-        <th>Table of Contents</th>
-      </thead>
-      <tbody>
-        <tr>
-          <a href = "">Link 1</a>
-        </tr>
-        <tr>
-          <a href = "">Link 2</a>
-        </tr>
-        <tr>
-          <a href = "">Link 3</a>
-        </tr>
-        <tr>
-          <a href = "">Link 4</a>
-        </tr>
-        <tr>
-          <a href = "">Link 5</a>
-        </tr>
-        <tr>
-          <a href = "">Link 6</a>
-        </tr>
-        <tr>
-          <a href = "">Link 7</a>
-        </tr>
-        <tr>
-          <a href = "">Link 8</a>
-        </tr>
-        <tr>
-          <a href = "">Link 9</a>
-        </tr>
-        <tr>
-          <a href = "">Link 10</a>
-        </tr>
-        <tr>
-          <a href = "">Link 11</a>
-        </tr>
-        <tr>
-          <a href = "">Link 12</a>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-	<div class="col col-lg-7 col-med-7 col-sm-7">
-    <div class="title-toolbar">
-      <form>
-        <div class="row">
-          <div class="col" id="border">
-            <input type="text" class="form-control" placeholder="Title">
-          </div>
-          <div class="col-7" id="border">
-            <div class="float-right">
-              <ul class="list-inline">
-                <li class="list-inline-item"><p>Upload a file: </p></li>
-                <li class="list-inline-item"><label class="btn btn-secondary">Browse<input type="file" hidden></label></li>
-              </ul>
-            </div>
-          </div>
+    <!--Jumbotron-->
+    <!--<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="h1-reponsive mb-4 mt-2 blue-text font-bold">Fluid jumbotron</h1>
+            <p class="lead">This is the policy component</p>
         </div>
-      </form>
+    </div>-->
+    <!--/Jumbotron-->
+    <div class="container-fluid" id="border">
+      <div class="row">
+        <div class="col col-lg-3 col-med-3 col-sm-3" id="border">   <!-- Column 1 -->
+          <table>
+            <thead>
+              <th>Table of Contents</th>
+            </thead>
+            <tbody>
+              <tr>
+                <a href = "">Link 1</a>
+              </tr>
+              <tr>
+                <a href = "">Link 2</a>
+              </tr>
+              <tr>
+                <a href = "">Link 3</a>
+              </tr>
+              <tr>
+                <a href = "">Link 4</a>
+              </tr>
+              <tr>
+                <a href = "">Link 5</a>
+              </tr>
+              <tr>
+                <a href = "">Link 6</a>
+              </tr>
+              <tr>
+                <a href = "">Link 7</a>
+              </tr>
+              <tr>
+                <a href = "">Link 8</a>
+              </tr>
+              <tr>
+                <a href = "">Link 9</a>
+              </tr>
+              <tr>
+                <a href = "">Link 10</a>
+              </tr>
+              <tr>
+                <a href = "">Link 11</a>
+              </tr>
+              <tr>
+                <a href = "">Link 12</a>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      	<div class="col col-lg-7 col-med-7 col-sm-7" id="border">
+          <div class="title-toolbar">
+            <form>
+              <div class="row">
+                <div class="col" id="border">
+                  <input type="text" class="form-control" placeholder="Title">
+                </div>
+                <div class="col-7" id="border">
+                  <div class="float-right">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><p>Upload a file: </p></li>
+                      <li class="list-inline-item"><label class="btn btn-secondary">Browse<input type="file" hidden></label></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+      		<div class="container" id="border">
+      			<div class="row btn-group justify-content-center" role="group" aria-label="Policy Editor Buttons">
+      				<button type="button" class="btn btn-secondary">Bold</button>
+      				<button type="button" class="btn btn-secondary">Italics</button>
+      				<button type="button" class="btn btn-secondary">Save</button>
+      			</div>
+      			<div class="row">
+      				<textarea class="form-control" aria-label="Policy Editor"></textarea>
+      			</div>
+      		</div>
+      	</div>
+        <div class="col col-lg-2 col-med-2 col-sm-2" id="border">
+          Column 3
+        </div>
+      </div>
     </div>
-		<div class="container" id="border">
-			<div class="row btn-group justify-content-center" role="group" aria-label="Policy Editor Buttons">
-				<button type="button" class="btn btn-secondary">Bold</button>
-				<button type="button" class="btn btn-secondary">Italics</button>
-				<button type="button" class="btn btn-secondary">Save</button>
-			</div>
-			<div class="row">
-				<textarea class="form-control" aria-label="Policy Editor"></textarea>
-			</div>
-		</div>
-	</div>
-  <div class="col col-lg-1 col-med-1 col-sm-1">
-    Column 3
-  </div>
-</div>
+  </body>
+</html>
