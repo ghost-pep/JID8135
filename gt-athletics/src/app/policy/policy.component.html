@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 <!-- Navbar -->
 <div class = "nav">
 	<ul>
-		<li><a class="active" href="">Home</a></li>
+		<li><a class="inactive" href="">Home</a></li>
 		<li><a class="inactive" href="">About</a></li>
-		<li><a class="inactive" href="">Policies</a></li>
+		<li><a class="active" href="">Policies</a></li>
 		<li><a class="inactive" href="">HR Forms</a></li>
 		<li><a class="inactive" href="">Podcasts</a></li>
 		<li><a class="inactive" href="">Contact</a></li>
@@ -13,22 +12,15 @@
 <!-- /Navbar -->
 
 <!--Jumbotron-->
-<div class="jumbotron jumbotron-fluid">
+<!--<div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="h1-reponsive mb-4 mt-2 blue-text font-bold">Fluid jumbotron</h1>
         <p class="lead">This is the policy component</p>
     </div>
-</div>
+</div>-->
 <!--/Jumbotron-->
-=======
-<!-- <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-      <h1 class="h1-reponsive mb-4 mt-2 blue-text font-bold">Fluid jumbotron</h1>
-      <p class="lead">This is the policy component</p>
-  </div>
-</div> -->
 <div class="row">
-  <div class="col col-lg-4 col-med-4 col-sm-4">
+  <div class="col col-lg-4 col-med-4 col-sm-4" id="border">   <!-- Column 1 -->
     <table>
       <thead>
         <th>Table of Contents</th>
@@ -73,11 +65,24 @@
       </tbody>
     </table>
   </div>
-  <div class="col col-lg-7 col-med-7 col-sm-7">
-    Column 2
+  <div class="col col-lg-7 col-med-7 col-sm-7" id="border">   <!-- Column 2 -->
+    <div class="title-toolbar">
+      <form>
+        <div class="row">
+          <div class="col" id="border">
+            <input type="text" class="form-control" placeholder="Title">
+          </div>
+          <div class="col-7" id="border">
+            <ul>
+              <li><label class="btn btn-secondary">Browse<input type="file" hidden></label></li>
+              <li><p>Upload a file: </p></li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-  <div class="col col-lg-1 col-med-1 col-sm-1">
+  <div class="col col-lg-1 col-med-1 col-sm-1" id="border">   <!-- Column 3 -->
     Column 3
   </div>
 </div>
->>>>>>> ec9742469f339e069bcd73cf38d6609979a08a41
