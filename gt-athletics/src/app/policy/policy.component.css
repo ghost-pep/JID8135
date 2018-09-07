@@ -89,6 +89,11 @@ tr {
 /** /Title Toolbar **/
 
 /** Sidebar **/
+
+li.borderless {
+	border: none;
+}
+
 /** /Sidebar **/
 
 /** custom buttons **/
@@ -100,7 +105,3 @@ tr {
 	background-color: lightgrey;
 }
 /** /custom buttons **/
-
-li.borderless {
-	border: none;
-}
