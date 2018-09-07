@@ -1,3 +1,12 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+html, body {
+	background-color: #f1f1f1;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
 tr {
     background-color: #EAB543;
     text-align: center;
@@ -8,12 +17,20 @@ td {
     border: 2px solid black;
 }
 
-/** FOR DEBUGGING ONLY **/
-
-#border {
-	border: 2px solid black;
+.content {
+	margin: 25px 10px 0px 0px;
 }
 
+.row {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top:10px;
+}
+
+/** FOR DEBUGGING ONLY **/
+#border {
+	/* border: 2px solid black; */
+}
 /** /FOR DEBUGGING ONLY **/
 
 
@@ -59,7 +76,8 @@ td {
 }
 
 .nav li a:hover:not(.active) {
-	background-color: #262626;
+	/* background-color: #262626; */
+	background-color: #555555;
 	color: white;
 }
 /** /Navbar **/
@@ -79,7 +97,37 @@ td {
 	padding: 12px;
 }
 
+#text-editor {
+	min-height: 70vh;
+}
+
+
 /** /Title Toolbar **/
 
 /** Sidebar **/
+
+li.borderless {
+	border: none;
+}
+
+ul.vbottom {
+	position: absolute;
+	bottom: 0;
+}
+
 /** /Sidebar **/
+
+/** custom buttons **/
+
+.gray {
+	background-color: #f1f1f1;
+}
+
+.blank {
+	background: white;
+}
+
+.blank:hover {
+	background-color: lightgray;
+}
+/** /custom buttons **/
