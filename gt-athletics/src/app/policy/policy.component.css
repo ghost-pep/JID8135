@@ -100,3 +100,7 @@ tr {
 	background-color: lightgrey;
 }
 /** /custom buttons **/
+
+li.borderless {
+	border: none;
+}

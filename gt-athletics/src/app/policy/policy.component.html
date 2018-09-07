@@ -1,106 +1,119 @@
-<!-- Navbar -->
-<div class = "nav">
-  <ul>
-    <li><a class="inactive" href="">Home</a></li>
-    <li><a class="inactive" href="">About</a></li>
-    <li><a class="active" href="">Policies</a></li>
-    <li><a class="inactive" href="">HR Forms</a></li>
-    <li><a class="inactive" href="">Podcasts</a></li>
-    <li><a class="inactive" href="">Contact</a></li>
-  </ul>
-</div>
-<!-- /Navbar -->
-<!-- <div class="container-fluid" id="border"> -->
-  <div class="row">
-    <div class="col col-lg-3 col-med-3 col-sm-3" id="border">
-      <table>
-        <thead>
-          <th>Table of Contents</th>
-        </thead>
-        <tbody>
-          <tr>
-            <a href = "">Link 1</a>
-          </tr>
-          <tr>
-            <a href = "">Link 2</a>
-          </tr>
-          <tr>
-            <a href = "">Link 3</a>
-          </tr>
-          <tr>
-            <a href = "">Link 4</a>
-          </tr>
-          <tr>
-            <a href = "">Link 5</a>
-          </tr>
-          <tr>
-            <a href = "">Link 6</a>
-          </tr>
-          <tr>
-            <a href = "">Link 7</a>
-          </tr>
-          <tr>
-            <a href = "">Link 8</a>
-          </tr>
-          <tr>
-            <a href = "">Link 9</a>
-          </tr>
-          <tr>
-            <a href = "">Link 10</a>
-          </tr>
-          <tr>
-            <a href = "">Link 11</a>
-          </tr>
-          <tr>
-            <a href = "">Link 12</a>
-          </tr>
-        </tbody>
-      </table>
+<!DOCTYPE html>
+<html lang="en">      <!-- DO NOT REMOVE THE HEAD OR BODY TAGS -->
+  <head>
+        <!-- Include Editor style. -->
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/froala_editor.min.css' rel='stylesheet' type='text/css' />
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/css/froala_style.min.css' rel='stylesheet' type='text/css' />
+     
+        <!-- Include JS file. -->
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.4/js/froala_editor.min.js'></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class = "nav">
+      <ul>
+        <li><a class="inactive" href="">Home</a></li>
+        <li><a class="inactive" href="">About</a></li>
+        <li><a class="active" href="">Policies</a></li>
+        <li><a class="inactive" href="">HR Forms</a></li>
+        <li><a class="inactive" href="">Podcasts</a></li>
+        <li><a class="inactive" href="">Contact</a></li>
+      </ul>
     </div>
-    <div class="col col-lg-7 col-med-7 col-sm-7" id="border">
-      <div class="title-toolbar">
-        <form>
-          <div class="row">
-            <div class="col" id="border">
-              <input type="text" class="form-control" placeholder="Title">
-            </div>
-            <div class="col-7" id="border">
-              <div class="float-right">
-                <ul class="list-inline">
-                  <li class="list-inline-item"><p>Upload a file: </p></li>
-                  <li class="list-inline-item"><label class="btn btn-secondary">Browse<input type="file" hidden></label></li>
-                </ul>
+    <!-- /Navbar -->
+    <!-- <div class="container-fluid" id="border"> -->
+      <div class="row" style="margin: 25px 10px 0px 10px">
+        <div class="col col-lg-3 col-med-3 col-sm-3" align="center" id="border">
+          <table>
+            <thead>
+              <th>Table of Contents</th>
+            </thead>
+            <tbody>
+              <tr>
+                <a href = "">Link 1</a>
+              </tr>
+              <tr>
+                <a href = "">Link 2</a>
+              </tr>
+              <tr>
+                <a href = "">Link 3</a>
+              </tr>
+              <tr>
+                <a href = "">Link 4</a>
+              </tr>
+              <tr>
+                <a href = "">Link 5</a>
+              </tr>
+              <tr>
+                <a href = "">Link 6</a>
+              </tr>
+              <tr>
+                <a href = "">Link 7</a>
+              </tr>
+              <tr>
+                <a href = "">Link 8</a>
+              </tr>
+              <tr>
+                <a href = "">Link 9</a>
+              </tr>
+              <tr>
+                <a href = "">Link 10</a>
+              </tr>
+              <tr>
+                <a href = "">Link 11</a>
+              </tr>
+              <tr>
+                <a href = "">Link 12</a>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col col-lg-7 col-med-7 col-sm-7" id="border">
+          <div class="title-toolbar">
+            <form>
+              <div class="row">
+                <div class="col" id="border">
+                  <input type="text" class="form-control" placeholder="Title">
+                </div>
+                <div class="col-7" id="border">
+                  <div class="float-right">
+                    <ul class="list-inline">
+                      <li class="list-inline-item"><p>Upload a file: </p></li>
+                      <li class="list-inline-item"><label class="btn btn-secondary">Browse<input type="file" hidden></label></li>
+                    </ul>
+                  </div>
+                </div>
               </div>
+            </form>
+          </div>
+          <div class="container" id="border">
+            <div class="row btn-group justify-content-center" role="group" aria-label="Policy Editor Buttons">
+              <button type="button" class="btn btn-secondary">Bold</button>
+              <button type="button" class="btn btn-secondary">Italics</button>
+              <button type="button" class="btn btn-secondary">Save</button>
+            </div>
+            <div class="row" id="text-editor">
+              <textarea class="form-control" aria-label="Policy Editor"></textarea>
             </div>
           </div>
-        </form>
-      </div>
-      <div class="container" id="border">
-        <div class="row btn-group justify-content-center" role="group" aria-label="Policy Editor Buttons">
-          <button type="button" class="btn btn-secondary">Bold</button>
-          <button type="button" class="btn btn-secondary">Italics</button>
-          <button type="button" class="btn btn-secondary">Save</button>
         </div>
-        <div class="row" id="text-editor">
-          <textarea class="form-control" aria-label="Policy Editor"></textarea>
-        </div>
+        <div class="col col-lg-2 col-med-2 col-sm-2" id="border">
+          <div class="sidebar">
+            <ul class="list-group">
+              <li class="list-group-item borderless"><button type="button" class="btn btn-secondary">Search</button></li>
+              <li class="list-group-item borderless"><button type="button" class="btn btn-warning">Add</button></li>
+            </ul>
+            <ul class="list-group" id="bottom">
+              <li class="list-group-item borderless">
+                <button class="btn blank"><i class="fa fa-paper-plane" style="font-size: 36px"></i></button>
+              </li>
+              <li class="list-group-item borderless">
+                <button class="btn blank"><i class="fa fa-download" style="font-size: 36px"></i></button>
+              </li>
+            </ul>
+          </div>
+        <!-- </div> -->
       </div>
     </div>
-    <div class="col col-lg-2 col-med-2 col-sm-2" id="border">
-      <div class="sidebar">
-        <ul class="list-group">
-          <li class="list-group-item"><button type="button" class="btn btn-secondary">Search</button></li>
-          <li class="list-group-item"><button type="button" class="btn btn-warning">Add</button></li>
-        </ul>
-        <ul class="list-group" id="bottom">
-          <li class="list-group-item">
-            <button class="btn blank"><i class="fa fa-paper-plane" style="font-size: 36px"></i></button>
-          </li>
-          <li class="list-group-item">
-            <button class="btn blank"><i class="fa fa-download" style="font-size: 36px"></i></button>
-          </li>
-        </ul>
-      </div>
-    <!-- </div> -->
-  </div>
-</div>
+  </body>
+</html>
