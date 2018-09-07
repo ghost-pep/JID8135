@@ -81,6 +81,14 @@ tr {
 	align-content: bottom;
 }
 
+.blank {
+	background: white;
+}
+
+.blank:hover {
+	background-color: lightgrey;
+}
+
 /** /Title Toolbar **/
 
 /** Sidebar **/
