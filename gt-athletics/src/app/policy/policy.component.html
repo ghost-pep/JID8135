@@ -1,3 +1,16 @@
+<!-- Main Quill library -->
+<script src="//cdn.quilljs.com/1.0.0/quill.js"></script>
+<script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>
+
+<!-- Theme included stylesheets -->
+<link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
+
+<!-- Core build with no theme, formatting, non-essential modules -->
+<link href="//cdn.quilljs.com/1.0.0/quill.core.css" rel="stylesheet">
+<script src="//cdn.quilljs.com/1.0.0/quill.core.js"></script>
+
+
 <!-- Navbar -->
 <div class = "nav">
   <ul>
@@ -75,16 +88,9 @@
           </div>
         </form>
       </div>
-      <div class="container" id="border">
-        <div class="row btn-group justify-content-center" role="group" aria-label="Policy Editor Buttons">
-          <button type="button" class="btn btn-secondary">Bold</button>
-          <button type="button" class="btn btn-secondary">Italics</button>
-          <button type="button" class="btn btn-secondary">Save</button>
-        </div>
         <div class="row" id="text-editor">
-          <textarea class="form-control" aria-label="Policy Editor"></textarea>
+          <quill-editor theme="snow" [(ngModel)]="editorOutput"></quill-editor>
         </div>
-      </div>
     </div>
     <div class="col col-lg-2 col-med-2 col-sm-2" id="border">
       <div class="sidebar">
@@ -101,6 +107,5 @@
           </li>
         </ul>
       </div>
-    <!-- </div> -->
   </div>
 </div>
