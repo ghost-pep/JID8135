@@ -1,4 +1,81 @@
 tr {
     background-color: #EAB543;
     text-align: center;
+    border: 2px solid black;
 }
+
+/** FOR DEBUGGING ONLY **/
+
+#border {
+	border: 2px solid black;
+}
+
+/** /FOR DEBUGGING ONLY **/
+
+
+
+/** Navbar **/
+.active {
+	background-color: #262626 !important;
+	pointer-events: none;
+	cursor: default;
+	color: white !important;
+}
+
+.nav a:link {
+	color: black;
+	background-color: transparent;
+	text-decoration: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.nav ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #EDB316;
+	top: 0%;
+	width: 100%;
+}
+
+.nav li {
+	float: left;
+}
+
+.nav li a {
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+}
+
+.nav li a:hover:not(.active) {
+	background-color: #262626;
+	color: white;
+}
+/** /Navbar **/
+
+/** Title Toolbar **/
+
+.title-toolbar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	top: 0%;
+	width: 100%;
+}
+
+.title-toolbar li a {
+	padding: 12px;
+}
+
+/** /Title Toolbar **/
+
+/** Sidebar **/
+/** /Sidebar **/
