@@ -110,3 +110,13 @@ tr {
 .blank-item {
 	border: none;
 }
+
+/** links **/
+a {
+	color: rgb(0, 0, 252);
+}
+/** /links **/
+
+.title {
+}
+
