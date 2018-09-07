@@ -7,12 +7,20 @@ html, body {
 	margin: 0;
 }
 
-tr {
+.toc_tbody tr {
     background-color: #EAB543;
     text-align: center;
 }
 
-td {
+.toc_tbody a:link {
+    color: #1e3799;
+}
+
+.toc_tbody a:hover {
+    color: #7f8c8d;
+}
+
+.toc_tbody td {
     padding: 2px;
     border: 2px solid black;
 }
