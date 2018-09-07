@@ -5,11 +5,9 @@ tr {
 }
 
 /** FOR DEBUGGING ONLY **/
-
 #border {
 	border: 2px solid black;
 }
-
 /** /FOR DEBUGGING ONLY **/
 
 
@@ -73,6 +71,14 @@ tr {
 
 .title-toolbar li a {
 	padding: 12px;
+}
+
+#text-editor {
+	min-height: 70vh;
+}
+
+#bottom {
+	align-content: bottom;
 }
 
 /** /Title Toolbar **/
