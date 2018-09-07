@@ -5,6 +5,12 @@ tr {
     border: 2px solid black;
 }
 
+.row {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top:10px;
+}
+
 /** FOR DEBUGGING ONLY **/
 #border {
 	/* border: 2px solid black; */
@@ -54,7 +60,8 @@ tr {
 }
 
 .nav li a:hover:not(.active) {
-	background-color: #262626;
+	/* background-color: #262626; */
+	background-color: #555555;
 	color: white;
 }
 /** /Navbar **/
@@ -78,10 +85,13 @@ tr {
 	min-height: 70vh;
 }
 
-#bottom {
-	align-content: bottom;
-}
 
+/** /Title Toolbar **/
+
+/** Sidebar **/
+/** /Sidebar **/
+
+/** custom buttons **/
 .blank {
 	background: white;
 }
@@ -89,8 +99,4 @@ tr {
 .blank:hover {
 	background-color: lightgrey;
 }
-
-/** /Title Toolbar **/
-
-/** Sidebar **/
-/** /Sidebar **/
+/** /custom buttons **/
