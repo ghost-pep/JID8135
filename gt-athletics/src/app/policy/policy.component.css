@@ -1,6 +1,10 @@
 tr {
     background-color: #EAB543;
     text-align: center;
+}
+
+td {
+    padding: 2px;
     border: 2px solid black;
 }
 
