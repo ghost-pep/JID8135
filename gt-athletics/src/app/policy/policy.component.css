@@ -99,4 +99,14 @@ tr {
 .blank:hover {
 	background-color: lightgrey;
 }
+
+.side {
+	width: 100px;
+}
 /** /custom buttons **/
+
+
+/** list item styling **/
+.blank-item {
+	border: none;
+}
