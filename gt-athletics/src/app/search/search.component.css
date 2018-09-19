@@ -13,7 +13,7 @@ tr {
 
 /** FOR DEBUGGING ONLY **/
 #border {
-	border: 2px solid black;
+	/*border: 2px solid black;*/
 }
 /** /FOR DEBUGGING ONLY **/
 
@@ -87,6 +87,9 @@ tr {
 
 
 /** /Title Toolbar **/
+.title-toolbar {
+	padding-bottom: 10px;
+}
 
 /** Sidebar **/
 /** /Sidebar **/
@@ -122,5 +125,10 @@ a {
 
 #bottom {
 	margin-top: 55vh;
+}
+
+#search-table {
+	overflow-y: scroll;
+	min-height: 80vh;
 }
 
