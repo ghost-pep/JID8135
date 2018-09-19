@@ -2,13 +2,16 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Backend for GT Athletic Policy Web App",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mihir Parshionikar",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.15",
+    "mongoose-gridfs": "^0.5.0"
   }
 }
