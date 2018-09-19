@@ -5,12 +5,16 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing-module';
 import { AppComponent } from './app.component';
 import { PolicyComponent } from './policy/policy.component';
+import { SearchComponent } from './search/search.component';
 import { QuillModule } from 'ngx-quill';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PolicyComponent
+    PolicyComponent,
+    SearchComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
