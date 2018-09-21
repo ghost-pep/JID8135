@@ -7,6 +7,8 @@
 var express    = require('express');        // call express
 var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
+var mongoose   = require('mongoose');
+var fs		   = require('fs');
 
 // configure ap to use bodyParser()
 // this will let us get the data from a POST
@@ -23,6 +25,10 @@ var router = express.Router();              // get an instance of the express Ro
 router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });   
 });
+
+//router.get('/policy/add'......
+//router.get('/policy/delete'......
+//router.get('/policy/download'......
 
 // more routes for our API will happen here
 
