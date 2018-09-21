@@ -26,7 +26,9 @@ router.get('/', function(req, res) {
     res.json({ message: 'hooray! welcome to our api!' });   
 });
 
-//router.get('/policy/add'......
+router.post('/policy/add/raw', (req, res) => {
+});
+
 //router.get('/policy/delete'......
 //router.get('/policy/download'......
 
