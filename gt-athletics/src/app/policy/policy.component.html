@@ -5,11 +5,9 @@
 <!-- Theme included stylesheets -->
 <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
 <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
-
 <!-- Core build with no theme, formatting, non-essential modules -->
 <link href="//cdn.quilljs.com/1.0.0/quill.core.css" rel="stylesheet">
 <script src="//cdn.quilljs.com/1.0.0/quill.core.js"></script>
-
 <!-- <div class="container-fluid" id="border"> -->
   <div class="row" style="margin: 4px 0px 4px 0px">
     <div class="col col-lg-3 col-med-3 col-sm-3" id="border">
@@ -81,7 +79,7 @@
     <div class="col col-lg-2 col-med-2 col-sm-2" id="border">
       <div class="sidebar">
         <ul class="list-group">
-          <li class="list-group-item blank-item"><button type="button" class="btn btn-secondary side">Search</button></li>
+          <li class="list-group-item blank-item"><button type="button" class="btn btn-secondary side" data-toggle="modal" data-target="#searchModal">Search</button></li>
           <li class="list-group-item blank-item"><button type="button" class="btn btn-warning side">Add</button></li>
         </ul>
         <ul class="list-group" id="bottom">
@@ -95,3 +93,25 @@
       </div>
   </div>
 </div>
+
+
+<!--Modal-->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Search for a policy</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-search></app-search> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/Modal -->
