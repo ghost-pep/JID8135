@@ -8,13 +8,15 @@ import { PolicyComponent } from './policy/policy.component';
 import { SearchComponent } from './search/search.component';
 import { QuillModule } from 'ngx-quill';
 import { HomeComponent } from './home/home.component';
+import { EditPolicyComponent } from './edit-policy/edit-policy.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PolicyComponent,
     SearchComponent,
-    HomeComponent
+    HomeComponent,
+    EditPolicyComponent
   ],
   imports: [
     BrowserModule,
