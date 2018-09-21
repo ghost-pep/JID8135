@@ -46,6 +46,8 @@ db.once('open', function() {
 	router.get('/', function(req, res) {
 		res.json({ message: 'hooray! welcome to our api!' });   
 	});
+	router.post('/policy/add/raw', (req, res) => {
+	});
 
 	//router.get('/policy/add'......
 	//router.get('/policy/delete'......
