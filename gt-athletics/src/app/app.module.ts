@@ -9,6 +9,7 @@ import { SearchComponent } from './search/search.component';
 import { QuillModule } from 'ngx-quill';
 import { HomeComponent } from './home/home.component';
 import { EditPolicyComponent } from './edit-policy/edit-policy.component';
+import { ViewPolicyComponent } from './view-policy/view-policy.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EditPolicyComponent } from './edit-policy/edit-policy.component';
     PolicyComponent,
     SearchComponent,
     HomeComponent,
-    EditPolicyComponent
+    EditPolicyComponent,
+    ViewPolicyComponent
   ],
   imports: [
     BrowserModule,

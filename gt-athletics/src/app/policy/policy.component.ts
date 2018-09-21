@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./policy.component.css']
 })
 export class PolicyComponent implements OnInit {
-  editorOutput;
   constructor() { }
 
   ngOnInit() {
