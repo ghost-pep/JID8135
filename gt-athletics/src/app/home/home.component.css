@@ -2,10 +2,47 @@
 	border: 2px solid black;
 }
 
+.row {
+	padding: 10px 20px 0px 20px;
+}
+
+.col {
+	min-height: 90vh;
+}
+
 .title-text {
 	text-align: center;
 }
 
 .body-text {
 	text-align: center;
+}
+
+.list-item {
+	padding: 0px;
+	min-height: 20vh;
+}
+
+.sidebar {
+	padding: 10px;
+	max-height: 90vh;
+	overflow-y: scroll;
+	background-color: rgb(238, 238, 238);
+}
+
+.block-title {
+	background-color: #00254C;
+	color: #FFFFFF;
+	padding: 10px;
+	margin-bottom: 6px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.block-image-wrapper {
+	margin-bottom: 6px;
+}
+
+.block-link {
+	margin-bottom: 25px;
 }
