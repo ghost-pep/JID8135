@@ -9,6 +9,7 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 var fs		   = require('fs');
+var Raw		   = require('./model/raw.js');
 
 var con_str = process.env.MONGOCON;
 
@@ -46,8 +47,44 @@ db.once('open', function() {
 	router.get('/', function(req, res) {
 		res.json({ message: 'hooray! welcome to our api!' });   
 	});
-	router.post('/policy/add/raw', (req, res) => {
-	});
+	router.route('/policy/raw')
+	
+		.post(function(req, res) {
+			var raw_policy = new Raw();
+			raw_policy.title = req.body.title;
+			raw_policy.content = req.body.content;
+
+			raw_policy.save(function(err) {
+				if (err)
+					res.send(err);
+
+				res.json({ message: 'Raw policy created!', id: raw_policy.id });
+			});
+		});
+
+	router.route('/policy/raw/:raw_id')
+		.get(function(req, res) {
+			Raw.findById(
+				req.params.raw_id,
+				function(err, raw_policy) {
+					if (err)
+						res.send(err);
+					
+					res.json(raw_policy);
+				});
+		})
+
+
+		.delete(function(req, res) {
+			Raw.remove({
+				_id: req.params.raw_id
+			}, function(err, raw_policy) {
+				if (err)
+					res.send(err);
+
+				res.json({message: 'Successfully deleted' });
+			});
+		});
 
 	//router.get('/policy/add'......
 	//router.get('/policy/delete'......
