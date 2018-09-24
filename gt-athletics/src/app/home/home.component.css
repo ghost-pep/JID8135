@@ -51,6 +51,7 @@
 
 .block-title {
 	background-color: #00254C;
+	cursor: default;
 	color: #FFFFFF;
 	padding: 10px;
 	margin-bottom: 6px;
