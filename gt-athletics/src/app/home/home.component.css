@@ -2,6 +2,10 @@
 	border: 2px solid black;
 }
 
+@font-face {
+	font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
 .row {
 	padding: 10px 20px 0px 20px;
 }
@@ -14,8 +18,15 @@
 	text-align: center;
 }
 
-.body-text {
-	text-align: center;
+.title-text h1 {
+	font-weight: 600;
+}
+
+.body-text p {
+	font-weight: 600;
+	font-size: 1.2em;
+	text-align: left;
+	margin-bottom: 0px;
 }
 
 .list-item {
@@ -27,7 +38,15 @@
 	padding: 10px;
 	max-height: 90vh;
 	overflow-y: scroll;
-	background-color: rgb(238, 238, 238);
+	background-color: #EEEEEE;
+}
+
+.hr-style {
+	border: 0;
+	height: 1px;
+	background: #333333;
+	margin: 20px 0px 20px 0px;
+	background-image: linear-gradient(to right, #CCCCCC, #333333, #CCCCCC);
 }
 
 .block-title {
@@ -44,5 +63,5 @@
 }
 
 .block-link {
-	margin-bottom: 25px;
+	/*margin-bottom: 20px;*/
 }

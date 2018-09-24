@@ -69,6 +69,7 @@ a {
 /** /links **/
 
 .title {
+	border-bottom: 4px solid #EEB211;
 }
 
 #bottom {
