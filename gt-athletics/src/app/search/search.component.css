@@ -129,6 +129,6 @@ a {
 
 #search-table {
 	overflow-y: scroll;
-	min-height: 80vh;
+	max-height: 50vh;
 }
 
