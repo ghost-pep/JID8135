@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 var fs		   = require('fs');
 var Raw		   = require('./model/raw.js');
+var Pdf        = require('./model/pdf.js');
 
 var con_str = process.env.MONGOCON;
 
@@ -61,6 +62,11 @@ db.once('open', function() {
 				res.json({ message: 'Raw policy created!', id: raw_policy.id });
 			});
 		});
+
+    router.route('/policy/pdf')
+        .post(function(req, res) {
+            var pdfpolicy = new Pdf();
+        });
 
 	router.route('/policy/raw/:raw_id')
 		.get(function(req, res) {
