@@ -1,12 +1,9 @@
 var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+var Schema = mongoose.Schema;
+var PdfPolicySchema = new Schema({
+	filename: String,
 
-var gridfs = require('mongoose-gridfs')({
-  collection:'policies',
-  model:'PdfPolicy',
-  mongooseConnection: mongoose.connection
 });
+module.exports = mongoose.model('Pdf', PdfPolicySchema);
 
-var PdfPolicySchema = gridfs.schema
 
-module.export = mongoose.model('PdfPolicy', PdfPolicySchema)

@@ -10,7 +10,6 @@ var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 var fs		   = require('fs');
 var Raw		   = require('./model/raw.js');
-var Pdf        = require('./model/pdf.js');
 
 var con_str = process.env.MONGOCON;
 
@@ -21,17 +20,10 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 	// we're connected!
 	console.log('connected!');
-
-	// instantiate the schemas
-	var rawPolicySchema = new mongoose.Schema({
-		title: String,
-		content: String
+	var gridfs = require('mongoose-gridfs')({
+	  mongooseConnection: mongoose.connection
 	});
 
-	//instantiate mongoose-gridfs
-	//var gridfs = require('mongoose-gridfs')({
-	//	mongooseConnection: mongoose.connection
-	//});
 
 	// configure ap to use bodyParser()
 	// this will let us get the data from a POST
