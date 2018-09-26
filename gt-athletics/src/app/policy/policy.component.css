@@ -69,7 +69,12 @@ a {
 /** /links **/
 
 .title {
-	border-bottom: 4px solid #EEB211;
+	/*border-bottom: 4px solid #EEB211;*/
+}
+
+.toc-link {
+	color: black;
+	text-decoration: none;
 }
 
 #bottom {
