@@ -24,6 +24,7 @@ db.once('open', function() {
 	  mongooseConnection: mongoose.connection
 	});
 
+	var File = gridfs.model;
 
 	// configure ap to use bodyParser()
 	// this will let us get the data from a POST
@@ -57,7 +58,15 @@ db.once('open', function() {
 
     router.route('/policy/pdf')
         .post(function(req, res) {
-            var pdfpolicy = new Pdf();
+			//TODO: check if it is actually a pdf
+			File.write(
+				{filename: req.filename,
+				contentType: 'pdf'},
+				fs.createReadStream(req.content),
+				function(err, createdFile){
+				
+				}
+			);
         });
 
 	router.route('/policy/raw/:raw_id')
