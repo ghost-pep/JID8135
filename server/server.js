@@ -12,6 +12,10 @@ var fs		   = require('fs');
 var Raw		   = require('./model/raw.js');
 
 var con_str = process.env.MONGOCON;
+if (!con_str) {
+	console.log("No connection string provided in env MONGOCON");
+	process.exit();
+}
 
 // connect mongoose
 mongoose.connect(con_str);
