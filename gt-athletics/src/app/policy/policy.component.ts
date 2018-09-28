@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-policy',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./policy.component.css']
 })
 export class PolicyComponent implements OnInit {
-  viewEditor = false;
+  viewEditor = 'edit';
   constructor() { }
-
   ngOnInit() {
   }
-
+  itemClicked(editorToDisplay) {
+    // console.log(this.viewEditor);
+    // console.log(editorToDisplay);
+    // this.viewEditor = String(editorToDisplay.toString());
+    // console.log(this.viewEditor);
+    console.log('itemclick');
+    this.viewEditor = 'view';
+  }
 }

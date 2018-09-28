@@ -1,14 +1,9 @@
-<!-- Main Quill library -->
 <script src="//cdn.quilljs.com/1.0.0/quill.js"></script>
 <script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>
-
-<!-- Theme included stylesheets -->
 <link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
 <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
-<!-- Core build with no theme, formatting, non-essential modules -->
 <link href="//cdn.quilljs.com/1.0.0/quill.core.css" rel="stylesheet">
 <script src="//cdn.quilljs.com/1.0.0/quill.core.js"></script>
-<!-- <div class="container-fluid" id="border"> -->
   <div class="row" style="margin: 4px 0px 4px 0px">
     <div class="col col-lg-3 col-med-3 col-sm-3" id="border">
       <table>
@@ -72,11 +67,11 @@
           </div>
         </form>
       </div>
-        <!-- <div class="row" id="text-editor">
-          <quill-editor theme="snow" [(ngModel)]="editorOutput"></quill-editor>
-        </div> -->
-        <app-edit-policy *ngIf="viewEditor"></app-edit-policy>
-        <app-view-policy *ngIf="!viewEditor"></app-view-policy>
+      {{viewEditor}}
+      {{viewEditor.length}}
+
+      <app-edit-policy *ngIf="viewEditor==='edit'"></app-edit-policy>
+        <app-view-policy *ngIf="viewEditor==='view'"></app-view-policy>
     </div>
     <div class="col col-lg-2 col-med-2 col-sm-2" id="border">
       <div class="sidebar">
@@ -107,7 +102,40 @@
         </button>
       </div>
       <div class="modal-body">
-        <app-search></app-search> 
+        <!-- <app-search (policyClicked) = "itemClicked('view')"></app-search> -->
+        <div class="title-toolbar">
+          <form>
+            <div class="row">
+              <div class="col" style="padding-left: 0px">
+                <div class="input-group" style="padding-left: 0px">
+                  <input class="form-control py-2" type="search" placeholder="Search" id="example-search-input">
+                  <span class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="list-group" id="search-table">
+          <a class="list-group-item list-group-item-action" (click) = "itemClicked('view');" data-dismiss="modal">1 | Result</a>
+          <a class="list-group-item list-group-item-action">2 | Result</a>
+          <a class="list-group-item list-group-item-action">3 | Result</a>
+          <a class="list-group-item list-group-item-action">4 | Result</a>
+          <a class="list-group-item list-group-item-action">5 | Result</a>
+          <a class="list-group-item list-group-item-action">6 | Result</a>
+          <a class="list-group-item list-group-item-action">7 | Result</a>
+          <a class="list-group-item list-group-item-action">8 | Result</a>
+          <a class="list-group-item list-group-item-action">9 | Result</a>
+          <a class="list-group-item list-group-item-action">10 | Result</a>
+          <a class="list-group-item list-group-item-action">11 | Result</a>
+          <a class="list-group-item list-group-item-action">12 | Result</a>
+          <a class="list-group-item list-group-item-action">13 | Result</a>
+          <a class="list-group-item list-group-item-action">14 | Result</a>
+          <a class="list-group-item list-group-item-action">15 | Result</a>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

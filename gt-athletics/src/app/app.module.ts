@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
 
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app.routing-module';
@@ -10,6 +12,8 @@ import { QuillModule } from 'ngx-quill';
 import { HomeComponent } from './home/home.component';
 import { EditPolicyComponent } from './edit-policy/edit-policy.component';
 import { ViewPolicyComponent } from './view-policy/view-policy.component';
+
+// import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -22,9 +26,11 @@ import { ViewPolicyComponent } from './view-policy/view-policy.component';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     FormsModule,
     AppRoutingModule,
-    QuillModule
+    QuillModule,
+    // PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

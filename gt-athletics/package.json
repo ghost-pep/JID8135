@@ -21,8 +21,10 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
+    "ng2-pdf-viewer": "^5.1.2",
     "ngx-quill": "^3.4.0",
     "rxjs": "^6.0.0",
+    "zlib": "^1.0.5",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

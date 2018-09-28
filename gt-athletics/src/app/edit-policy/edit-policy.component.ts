@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-policy.component.css']
 })
 export class EditPolicyComponent implements OnInit {
-  editorOutput; // binds with rich text editor
+  editorOutput;
   constructor() { }
   ngOnInit() {
   }
