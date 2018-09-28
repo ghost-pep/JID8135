@@ -68,6 +68,9 @@ db.once('open', function() {
 				contentType: 'pdf'},
 				fs.createReadStream(req.content),
 				function(err, createdFile){
+					if (err) {
+						console.log("there was an error on pdf creation");
+					}
 				
 				}
 			);
