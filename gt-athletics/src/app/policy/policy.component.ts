@@ -23,5 +23,6 @@ export class PolicyComponent implements OnInit {
   itemClicked(editorToDisplay) {
     console.log('item');
     this.viewEditor = 'view';
+    this.search = '';
   }
 }
