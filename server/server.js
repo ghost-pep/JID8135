@@ -43,10 +43,10 @@ db.once('open', function() {
 
 	// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 	router.get('/', function(req, res) {
-		res.json({ message: 'hooray! welcome to our api!' });   
+		res.json({ message: 'hooray! welcome to our api!' });
 	});
 	router.route('/policy/raw')
-	
+
 		.post(function(req, res) {
 			var raw_policy = new Raw();
 			raw_policy.title = req.body.title;
@@ -71,10 +71,31 @@ db.once('open', function() {
 					if (err) {
 						console.log("there was an error on pdf creation");
 					}
-				
+
 				}
 			);
         });
+
+	router.route('/policy/pdf/:pdf_id')
+		.get(function(req, res) {
+			File.readById(
+				req.params.pdf_id,
+				function(err, pdf_policy) {
+				if (err)
+					res.send(err);
+				res.send(pdf_policy);
+			})
+		})
+
+		.delete(function(req, res) {
+			File.unlinkById(
+				req.params.pdf_id,
+				function(err, pdf_policy) {
+				if (err)
+					res.send(err);
+				res.send({message: 'Successfully deleted'});
+			})
+		});
 
 	router.route('/policy/raw/:raw_id')
 		.get(function(req, res) {
@@ -83,7 +104,7 @@ db.once('open', function() {
 				function(err, raw_policy) {
 					if (err)
 						res.send(err);
-					
+
 					res.json(raw_policy);
 				});
 		})
