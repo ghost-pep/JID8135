@@ -1,3 +1,7 @@
-<!-- <p>view-policy works!</p> -->
-<!-- <pdf-viewer [src]="./../data/complimentary_football_tickets.pdf" [render-text]="true"></pdf-viewer> -->
-<div [innerHTML]=documentText></div>
+<!-- <div [innerHTML]=documentText></div> -->
+<!-- <script src="https://www.jsdelivr.com/package/npm/pdfjs-dist"></script> -->
+<div>
+    <object data="app/data/complimentary_football_tickets.pdf" type="application/pdf" style="min-height: 80vh; width: 100%;">
+        <embed src="app/data/complimentary_football_tickets.pdf" type="application/pdf" />
+    </object>
+</div>
