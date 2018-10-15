@@ -63,6 +63,7 @@ db.once('open', function() {
     router.route('/policy/pdf')
         .post(function(req, res) {
 			//TODO: check if it is actually a pdf
+			// or not if we are lazy lmao
 			File.write(
 				{filename: req.filename,
 				contentType: 'pdf'},
@@ -70,8 +71,9 @@ db.once('open', function() {
 				function(err, createdFile){
 					if (err) {
 						console.log("there was an error on pdf creation");
+						res.send(err);
 					}
-				
+					res.send({message: "Policy created!", id: File.id });
 				}
 			);
         });
