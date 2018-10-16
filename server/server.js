@@ -103,14 +103,7 @@ db.once('open', function() {
 
 	router.route('/policy/raw/all')
 		.get(function(req, res) {
-			Raw.findById(
-				req.params.raw_id,
-				function(err, raw_policy) {
-					if (err)
-						res.send(err);
-					
-					res.json(raw_policy);
-				});
+            Raw.find().all();
 		})
 
 	//router.get('/policy/add'......
