@@ -15,6 +15,10 @@ echo "===== Testing raw get ====="
 curl $IP:$PORT/api/policy/raw/$ID
 echo
 
+echo "===== Testing raw get all ====="
+curl $IP:$PORT/api/policy/raw/all
+echo
+
 echo "===== Testing raw delete ====="
 curl -X DELETE $IP:$PORT/api/policy/raw/$ID
 echo
