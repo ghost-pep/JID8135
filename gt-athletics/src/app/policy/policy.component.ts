@@ -20,6 +20,9 @@ export class PolicyComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
+  addClicked() {
+    this.viewEditor = 'edit';
+  }
   itemClicked(editorToDisplay) {
     console.log('item');
     this.viewEditor = 'view';
