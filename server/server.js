@@ -58,6 +58,13 @@ db.once('open', function() {
 
 				res.json({ message: 'Raw policy created!', id: raw_policy.id });
 			});
+		})
+		.get(function(req, res) {
+			Raw.find(function (err, products) {
+				if (err)
+					res.send(err);
+				res.json(products);
+			});
 		});
 
     router.route('/policy/pdf')
@@ -125,10 +132,13 @@ db.once('open', function() {
 
 
 	router.route('/policy/raw/all')
-	// TODO: make this actually get all of the raw policies
 		.get(function(req, res) {
-            res.json(Raw.find({}));
-		})
+			Raw.find(function (err, products) {
+				if (err)
+					res.send(err);
+				res.json(products);
+			});
+		});
 
 	//router.get('/policy/add'......
 	//router.get('/policy/delete'......

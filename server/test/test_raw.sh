@@ -16,7 +16,7 @@ curl $IP:$PORT/api/policy/raw/$ID
 echo
 
 echo "===== Testing raw get all ====="
-curl $IP:$PORT/api/policy/raw/all
+curl $IP:$PORT/api/policy/raw
 echo
 
 echo "===== Testing raw delete ====="
