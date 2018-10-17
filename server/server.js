@@ -125,6 +125,7 @@ db.once('open', function() {
 
 
 	router.route('/policy/raw/all')
+	// TODO: make this actually get all of the raw policies
 		.get(function(req, res) {
 			Raw.findById(
 				req.params.raw_id,
