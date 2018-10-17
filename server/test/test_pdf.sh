@@ -7,18 +7,19 @@ curl $IP:$PORT/api
 echo
 
 echo "===== Testing pdf add ====="
-DATA="title='hi'&content='helloworld'"
-ID=`curl -d $DATA $IP:$PORT/api/policy/raw | jq -r '.id'`
+DATA1="filename=./test.pdf"
+DATA2="content=@./test.pdf"
+ID=`curl -d $DATA1 -d $DATA2 $IP:$PORT/api/policy/pdf | jq -r '.id'`
 echo 
 
 echo "===== Testing pdf get ====="
-curl $IP:$PORT/api/policy/raw/$ID
+curl $IP:$PORT/api/policy/pdf/$ID
 echo
 
 echo "===== Testing pdf get all ====="
-curl $IP:$PORT/api/policy/raw/all
+curl $IP:$PORT/api/policy/pdf/all
 echo
 
 echo "===== Testing pdf delete ====="
-curl -X DELETE $IP:$PORT/api/policy/raw/$ID
+curl -X DELETE $IP:$PORT/api/policy/pdf/$ID
 echo

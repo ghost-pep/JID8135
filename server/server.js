@@ -65,9 +65,9 @@ db.once('open', function() {
 			//TODO: check if it is actually a pdf
 			// or not if we are lazy lmao
 			File.write(
-				{filename: req.filename,
+				{filename: req.body.filename,
 				contentType: 'pdf'},
-				fs.createReadStream(req.content),
+				fs.createReadStream(req.body.content),
 				function(err, createdFile){
 					if (err) {
 						console.log("there was an error on pdf creation");
@@ -127,7 +127,7 @@ db.once('open', function() {
 	router.route('/policy/raw/all')
 	// TODO: make this actually get all of the raw policies
 		.get(function(req, res) {
-            Raw.find().all();
+            res.json(Raw.find({}));
 		})
 
 	//router.get('/policy/add'......
