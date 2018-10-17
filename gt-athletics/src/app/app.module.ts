@@ -11,6 +11,9 @@ import { QuillModule } from 'ngx-quill';
 import { HomeComponent } from './home/home.component';
 import { EditPolicyComponent } from './edit-policy/edit-policy.component';
 import { ViewPolicyComponent } from './view-policy/view-policy.component';
+import { ContactComponent } from './contact/contact.component';
+import { HrFormsComponent } from './hr-forms/hr-forms.component';
+import { AboutComponent } from './about/about.component';
 
 // import { PdfViewerModule } from 'ng2-pdf-viewer';
 
@@ -21,7 +24,10 @@ import { ViewPolicyComponent } from './view-policy/view-policy.component';
     SearchComponent,
     HomeComponent,
     EditPolicyComponent,
-    ViewPolicyComponent
+    ViewPolicyComponent,
+    ContactComponent,
+    HrFormsComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
