@@ -1,0 +1,130 @@
+<script src="//cdn.quilljs.com/1.0.0/quill.js"></script>
+<script src="//cdn.quilljs.com/1.0.0/quill.min.js"></script>
+<link href="//cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.0.0/quill.core.css" rel="stylesheet">
+<script src="//cdn.quilljs.com/1.0.0/quill.core.js"></script>
+  <div class="row" style="margin: 4px 0px 4px 0px">
+    <div class="col col-lg-3 col-med-3 col-sm-3" id="border">
+      <table>
+        <thead>
+          <th class="title">Table of Contents</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a href = "#" class="toc-link">Georgia Tech Athletics Compliance Manual</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href = "#" class="toc-link">Mobile Device Policy</a>
+            </td>
+            </tr>
+            <tr>
+              <td>
+                <a href = "#" class="toc-link">Moving and Relocation Policy</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href = "#" class="toc-link">Student Athlete Academic Support Services 2016-2017 Handbook</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href = "#" class="toc-link">Taxability of Complimentary Football Tickets - Season and Single Game</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href = "#" class="toc-link">Complimentary Men’s and Women’s Basketball Tickets</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href = "#" class="toc-link">Communication Standards</a>
+              </td>
+            </tr>
+         </tbody>
+      </table>
+    </div>
+    <div class="col col-lg-7 col-med-7 col-sm-7" id="border">
+      <div class="title-toolbar">
+        <form>
+          <div class="row">
+            <div class="col" id="border">
+              <input type="text" class="form-control" placeholder="Title">
+            </div>
+            <div class="col-7" id="border">
+              <div class="float-right">
+                <ul class="list-inline">
+                  <li class="list-inline-item"><p>Upload a file: </p></li>
+                  <li class="list-inline-item"><label class="btn btn-secondary">Browse<input type="file" hidden></label></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <app-edit-policy *ngIf="viewEditor==='edit'"></app-edit-policy>
+        <app-view-policy *ngIf="viewEditor==='view'"></app-view-policy>
+    </div>
+    <div class="col col-lg-2 col-med-2 col-sm-2" id="border">
+      <div class="sidebar">
+        <ul class="list-group">
+          <li class="list-group-item blank-item"><button type="button" class="btn btn-warning side" (click)="addClicked();">Add</button></li>
+          <li class="list-group-item blank-item"><button type="button" class="btn btn-secondary side" data-toggle="modal" data-target="#searchModal">Search</button></li>
+        </ul>
+        <ul class="list-group" id="bottom">
+          <li class="list-group-item blank-item">
+            <button class="btn blank"><i class="fa fa-paper-plane" style="font-size: 36px"></i></button>
+          </li>
+          <li class="list-group-item blank-item">
+            <button class="btn blank"><i class="fa fa-download" style="font-size: 36px"></i></button>
+          </li>
+        </ul>
+      </div>
+  </div>
+</div>
+<!--Modal-->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Search for a policy</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <app-search (policyClicked) = "itemClicked('view')"></app-search> -->
+        <div class="title-toolbar">
+          <form>
+            <div class="row">
+              <div class="col" style="padding-left: 0px">
+                <div class="input-group" style="padding-left: 0px">
+                  <input class="form-control py-2" type="search" name="searchPolicy" placeholder="Search" id="example-search-input" [(ngModel)]="search">
+                  <span class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="list-group" id="search-table">
+          <div *ngFor="let policy of policies">
+            <a *ngIf="policy.title.toLowerCase().includes(search.toLowerCase())" class="list-group-item list-group-item-action" (click) = "itemClicked('view');" data-dismiss="modal"> {{policy.title}} </a>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/Modal -->
