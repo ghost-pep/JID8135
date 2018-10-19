@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { FormsModule } from '@angular/forms';
@@ -15,8 +16,6 @@ import { ContactComponent } from './contact/contact.component';
 import { HrFormsComponent } from './hr-forms/hr-forms.component';
 import { AboutComponent } from './about/about.component';
 
-// import { PdfViewerModule } from 'ng2-pdf-viewer';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,10 +30,10 @@ import { AboutComponent } from './about/about.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     AppRoutingModule,
     QuillModule,
-    // PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import { BackendService } from './../backend.service';
 @Component({
   selector: 'app-policy',
   templateUrl: './policy.component.html',
@@ -17,11 +17,18 @@ export class PolicyComponent implements OnInit {
     { title: 'Moving and Relocation Policy' },
     { title: 'Student Athlete Academic Support Services Handbook 2015' }
   ];
-  constructor() { }
+  constructor(private backend: BackendService) { }
   ngOnInit() {
   }
   addClicked() {
     this.viewEditor = 'edit';
+    console.log('click');
+    const data = {field1: 'hey'};
+    this.backend.postRequest(data).subscribe(
+      (res) => {
+        console.log(res);
+      }
+    );
   }
   itemClicked(editorToDisplay) {
     console.log('item');

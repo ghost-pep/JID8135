@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-policy.component.css']
 })
 export class EditPolicyComponent implements OnInit {
-  editorOutput = "<p>Hello How are you!</p><p><br></p><p>Why don't you think about that for a hot second?</p>";
+  editorOutput = '<p>Placeholder text</p>';
   constructor() { }
   ngOnInit() {
   }
