@@ -10,4 +10,7 @@ export class EditPolicyComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
+  getEditorContent() {
+    return this.editorOutput;
+  }
 }

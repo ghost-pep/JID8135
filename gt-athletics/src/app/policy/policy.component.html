@@ -78,7 +78,7 @@
         </ul>
         <ul class="list-group" id="bottom">
           <li class="list-group-item blank-item">
-            <button class="btn blank"><i class="fa fa-paper-plane" style="font-size: 36px"></i></button>
+            <button class="btn blank" (click)="createPolicyClicked()"><i class="fa fa-paper-plane" style="font-size: 36px"></i></button>
           </li>
           <li class="list-group-item blank-item">
             <button class="btn blank"><i class="fa fa-download" style="font-size: 36px"></i></button>
@@ -98,7 +98,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- <app-search (policyClicked) = "itemClicked('view')"></app-search> -->
         <div class="title-toolbar">
           <form>
             <div class="row">

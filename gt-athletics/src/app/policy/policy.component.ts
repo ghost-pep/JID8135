@@ -1,11 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BackendService } from './../backend.service';
+import { EditPolicyComponent } from '../edit-policy/edit-policy.component';
+import { ViewChild } from '@angular/core';
+
 @Component({
   selector: 'app-policy',
   templateUrl: './policy.component.html',
   styleUrls: ['./policy.component.css']
 })
 export class PolicyComponent implements OnInit {
+  @ViewChild(EditPolicyComponent) editPolicy;
+
   viewEditor = 'edit';
   search = '';
   policies = [
@@ -22,17 +27,19 @@ export class PolicyComponent implements OnInit {
   }
   addClicked() {
     this.viewEditor = 'edit';
-    console.log('click');
-    const data = {field1: 'hey'};
-    this.backend.postRequest(data).subscribe(
-      (res) => {
-        console.log(res);
-      }
-    );
   }
   itemClicked(editorToDisplay) {
     console.log('item');
     this.viewEditor = 'view';
     this.search = '';
+  }
+  createPolicyClicked() {
+    console.log('click');
+    let data = {title: 'title', content: this.editPolicy.getEditorContent()};
+    this.backend.createRawPolicy(data).subscribe(
+      (res) => {
+        console.log(res);
+      }
+    );
   }
 }

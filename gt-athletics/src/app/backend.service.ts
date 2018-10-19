@@ -14,12 +14,12 @@ export class BackendService {
   url = this.dev_url;
   constructor(private http: HttpClient) { }
 
-  postRequest(data: any): Observable<any> {
+  createRawPolicy(data: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
       withCredentials: false,
     };
-    return this.http.post<any>(this.url + '/page', data, httpOptions)
+    return this.http.post<any>(this.url + 'api/policy/raw', data, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
