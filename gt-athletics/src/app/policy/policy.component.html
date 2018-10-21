@@ -68,13 +68,13 @@
         </form>
       </div>
       <app-edit-policy *ngIf="viewEditor==='edit'"></app-edit-policy>
-        <app-view-policy *ngIf="viewEditor==='view'"></app-view-policy>
+      <app-view-policy [content]="content" *ngIf="viewEditor==='view'" ></app-view-policy>
     </div>
     <div class="col col-lg-2 col-med-2 col-sm-2" id="border">
       <div class="sidebar">
         <ul class="list-group">
           <li class="list-group-item blank-item"><button type="button" class="btn btn-warning side" (click)="addClicked();">Add</button></li>
-          <li class="list-group-item blank-item"><button type="button" class="btn btn-secondary side" data-toggle="modal" data-target="#searchModal">Search</button></li>
+          <li class="list-group-item blank-item"><button type="button" class="btn btn-secondary side" data-toggle="modal" data-target="#searchModal" (click)="searchClicked()">Search</button></li>
         </ul>
         <ul class="list-group" id="bottom">
           <li class="list-group-item blank-item">
@@ -116,7 +116,7 @@
         </div>
         <div class="list-group" id="search-table">
           <div *ngFor="let policy of policies">
-            <a *ngIf="policy.title.toLowerCase().includes(search.toLowerCase())" class="list-group-item list-group-item-action" (click) = "itemClicked('view');" data-dismiss="modal"> {{policy.title}} </a>
+            <a *ngIf="policy.title.toLowerCase().includes(search.toLowerCase())" class="list-group-item list-group-item-action" (click) = "itemClicked('view', policy._id);" data-dismiss="modal"> {{policy.title}} </a>
           </div>
         </div>
       </div>

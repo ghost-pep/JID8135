@@ -24,6 +24,26 @@ export class BackendService {
         catchError(this.handleError)
       );
   }
+  getAll(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      withCredentials: false,
+    };
+    return this.http.get<any>(this.url + 'api/policy/raw', httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+  getPolicy(_id: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      withCredentials: false,
+    };
+    return this.http.get<any>(this.url + 'api/policy/raw/' + _id, httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
 
   /* Passed in via pipe
   @returns: RxJS ErrorObservable with user-friendly message

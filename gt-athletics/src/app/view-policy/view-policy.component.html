@@ -1,7 +1,12 @@
-<!-- <div [innerHTML]=documentText></div> -->
-<!-- <script src="https://www.jsdelivr.com/package/npm/pdfjs-dist"></script> -->
 <div>
-    <object data="app/data/complimentary_football_tickets.pdf" type="application/pdf" style="min-height: 80vh; width: 100%;">
+    <!-- PDF VIEWER -->
+    <!-- <object data="app/data/complimentary_football_tickets.pdf" type="application/pdf" style="min-height: 80vh; width: 100%;">
         <embed src="app/data/complimentary_football_tickets.pdf" type="application/pdf" />
-    </object>
+    </object> -->
+    <!-- /PDF VIEWER -->
+    {{content}}
+    <quill-editor theme="snow" [(ngModel)]="content" readOnly="true">
+        <div quill-editor-toolbar style="max-height: 0px; padding: 0px;"></div>
+    </quill-editor>
 </div>
+  
