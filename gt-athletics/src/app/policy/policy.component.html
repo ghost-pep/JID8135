@@ -54,7 +54,7 @@
         <form>
           <div class="row">
             <div class="col" id="border">
-              <input type="text" class="form-control" placeholder="Title">
+              <input type="text" class="form-control" placeholder="Title" [(ngModel)]="selectedPolicy.title" name="titleBox" [readonly]="viewEditor === 'view'">
             </div>
             <div class="col-7" id="border">
               <div class="float-right">
@@ -68,7 +68,7 @@
         </form>
       </div>
       <app-edit-policy *ngIf="viewEditor==='edit'"></app-edit-policy>
-      <app-view-policy [content]="content" *ngIf="viewEditor==='view'" ></app-view-policy>
+      <app-view-policy [content]="selectedPolicy.content" *ngIf="viewEditor==='view'" ></app-view-policy>
     </div>
     <div class="col col-lg-2 col-med-2 col-sm-2" id="border">
       <div class="sidebar">

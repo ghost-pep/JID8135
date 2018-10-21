@@ -3,7 +3,7 @@ import { BackendService } from './../backend.service';
 import { EditPolicyComponent } from '../edit-policy/edit-policy.component';
 import { ViewPolicyComponent } from '../view-policy/view-policy.component';
 import { ViewChild } from '@angular/core';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { Policy } from '../policy';
 
 @Component({
   selector: 'app-policy',
@@ -12,7 +12,8 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
 })
 export class PolicyComponent implements OnInit {
   @ViewChild(EditPolicyComponent) editPolicy;
-  content = 'Placeholder text';
+  // content = 'Placeholder text';
+  selectedPolicy: Policy;
   viewEditor = 'edit';
   search = '';
   policies = [
@@ -24,7 +25,13 @@ export class PolicyComponent implements OnInit {
     { title: 'Moving and Relocation Policy', _id: '' },
     { title: 'Student Athlete Academic Support Services Handbook 2015', _id: '' }
   ];
-  constructor(private backend: BackendService) { }
+  constructor(private backend: BackendService) {
+    this.selectedPolicy = {
+      title: '',
+      content: '',
+      _id: ''
+    };
+   }
   ngOnInit() {
   }
   
@@ -37,13 +44,17 @@ export class PolicyComponent implements OnInit {
     this.search = '';
     this.backend.getPolicy(_id).subscribe(
       (res) => {
-        this.content = res.content;
+        this.selectedPolicy = {
+          _id: res._id,
+          title: res.title,
+          content: res.content
+        };
       }
     );
   }
 
   createPolicyClicked() {
-    let data = {title: 'title', content: this.editPolicy.getEditorContent()};
+    let data = {title: this.selectedPolicy.title, content: this.editPolicy.getEditorContent()};
     this.backend.createRawPolicy(data).subscribe(
       (res) => {
         console.log(res);
