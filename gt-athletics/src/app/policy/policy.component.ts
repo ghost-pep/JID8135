@@ -27,7 +27,7 @@ export class PolicyComponent implements OnInit {
     { title: 'Moving and Relocation Policy', _id: '' },
     { title: 'Student Athlete Academic Support Services Handbook 2015', _id: '' }
   ];
-  constructor(private backend: BackendService, private http: Http) {
+  constructor(private backend: BackendService) {
     this.selectedPolicy = {
       title: '',
       content: '',
@@ -84,7 +84,11 @@ export class PolicyComponent implements OnInit {
 
   OnUploadFile() {
     //Upload file here send a binary data
-    this.http.post(`localhost:4200/file-upload`, this.selectedFile);
+    this.backend.uploadPolicy().subscribe(
+      (res) => {
+        console.log(res);
+      }
+    );
   }
 
 }

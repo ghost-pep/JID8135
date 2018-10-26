@@ -45,6 +45,17 @@ export class BackendService {
     );
   }
 
+  uploadPolicy(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      withCredentials: false,
+    };
+    return this.http.post<any>(this.url + 'api/policy/pdf/', httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
   /* Passed in via pipe
   @returns: RxJS ErrorObservable with user-friendly message
   */

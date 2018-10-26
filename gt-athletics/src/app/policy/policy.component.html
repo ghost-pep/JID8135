@@ -62,11 +62,9 @@
                   <li class="list-inline-item"><p>Upload a file: </p></li>
                   <li class="list-inline-item">
                     <label class="btn btn-secondary">
-                      <!--
-                      <input style=”display: none” type=”file” (change)=”onFileUpload($event)” id="selectFile" />
-                      <button (click)=”selectFile.click()”>Select File</button>
-                      <button (click)=”OnUploadFile()”>Upload</button>
-                      -->
+                      <input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile />
+                      <button (click)="selectFile.click()">Select File</button>
+                      <button (click)="OnUploadFile()">Upload</button>
                     </label>
                   </li>
                 </ul>
