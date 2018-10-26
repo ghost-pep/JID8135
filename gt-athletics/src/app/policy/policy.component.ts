@@ -4,6 +4,7 @@ import { EditPolicyComponent } from '../edit-policy/edit-policy.component';
 import { ViewPolicyComponent } from '../view-policy/view-policy.component';
 import { ViewChild } from '@angular/core';
 import { Policy } from '../policy';
+import {Http, Response, RequestOptions, Headers} from '@angular/http';
 
 @Component({
   selector: 'app-policy',
@@ -14,6 +15,7 @@ export class PolicyComponent implements OnInit {
   @ViewChild(EditPolicyComponent) editPolicy;
   // content = 'Placeholder text';
   selectedPolicy: Policy;
+  selectedFile: File;
   viewEditor = 'edit';
   search = '';
   policies = [
@@ -25,7 +27,7 @@ export class PolicyComponent implements OnInit {
     { title: 'Moving and Relocation Policy', _id: '' },
     { title: 'Student Athlete Academic Support Services Handbook 2015', _id: '' }
   ];
-  constructor(private backend: BackendService) {
+  constructor(private backend: BackendService, private http: Http) {
     this.selectedPolicy = {
       title: '',
       content: '',
@@ -70,4 +72,19 @@ export class PolicyComponent implements OnInit {
       }
     );
   }
+
+  onFileUpload(event){
+    this.selectedFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      console.log(reader.result);
+    };
+    reader.readAsDataURL(this.selectedFile);
+  }
+
+  OnUploadFile() {
+    //Upload file here send a binary data
+    this.http.post(`localhost:4200/file-upload`, this.selectedFile);
+  }
+
 }
