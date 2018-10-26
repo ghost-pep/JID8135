@@ -149,6 +149,10 @@ db.once('open', function() {
 	// REGISTER OUR ROUTES -------------------------------
 	// all of our routes will be prefixed with /api
 	app.use('/api', router);
+	app.use(function(req, res) {
+		res.header("Access-Control-Allow-Origin", "*");
+		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	});
 
 	// START THE SERVER
 	// =============================================================================
