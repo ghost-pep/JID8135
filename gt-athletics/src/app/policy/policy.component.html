@@ -4,6 +4,7 @@
 <link href="//cdn.quilljs.com/1.0.0/quill.bubble.css" rel="stylesheet">
 <link href="//cdn.quilljs.com/1.0.0/quill.core.css" rel="stylesheet">
 <script src="//cdn.quilljs.com/1.0.0/quill.core.js"></script>
+<script src="policy.component.js"></script>
   <div class="row" style="margin: 4px 0px 4px 0px">
     <div class="col col-lg-3 col-med-3 col-sm-3" id="border">
       <table>
@@ -73,8 +74,8 @@
     <div class="col col-lg-2 col-med-2 col-sm-2" id="border">
       <div class="sidebar">
         <ul class="list-group">
-          <li class="list-group-item blank-item"><button type="button" class="btn btn-warning side" (click)="addClicked();">Add</button></li>
-          <li class="list-group-item blank-item"><button type="button" class="btn btn-secondary side" data-toggle="modal" data-target="#searchModal" (click)="searchClicked()">Search</button></li>
+          <li class="list-group-item blank-item"><button type="button" class="btn btn-dark side" (click)="addClicked();">Add</button></li>
+          <li class="list-group-item blank-item"><button type="button" class="btn btn-dark side" data-toggle="modal" data-target="#searchModal" (click)="searchClicked()">Search</button></li>
         </ul>
         <ul class="list-group" id="bottom">
           <li class="list-group-item blank-item">
