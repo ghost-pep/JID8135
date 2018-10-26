@@ -10,6 +10,10 @@ var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 var fs		   = require('fs');
 var Raw		   = require('./model/raw.js');
+var multer     = require('multer');
+
+var storage = multer.memoryStorage();
+var upload = multer({ storage: storage });
 
 var con_str = process.env.MONGOCON;
 if (!con_str) {
@@ -45,12 +49,37 @@ db.once('open', function() {
 	router.get('/', function(req, res) {
 		res.json({ message: 'hooray! welcome to our api!' });
 	});
-	router.route('/policy/raw')
+	router.route('/policy')
 
-		.post(function(req, res) {
+		.post(function(upload.single('pdf'), req, res) {
 			var raw_policy = new Raw();
 			raw_policy.title = req.body.title;
 			raw_policy.content = req.body.content;
+			raw_policy.pdf = req.file.buffer;
+
+			// do conversion to text and to pdf
+			/**
+			var cp = require('child_process');
+			var optipng = require('pandoc-bin').path; //This is a path to a command
+			var child = cp.spawn(optipng, ['--from=markdown', '--to=html']); //the array is the arguments
+
+			child.stdin.write('# HELLO'); //my command takes a markdown string...
+
+			child.stdout.on('data', function (data) {
+				console.log('stdout: ' + data);
+			});
+			child.stdin.end();
+			**/
+
+
+			// create child
+			// pass the input to the child
+			/*
+			var stdinStream = new stream.Readable();
+			stdinStream.push(input);  // Add data to the internal queue for users of the stream to consume
+			stdinStream.push(null);   // Signals the end of the stream (EOF)
+			stdinStream.pipe(child.stdin);
+			*/
 
 			raw_policy.save(function(err) {
 				if (err)
@@ -67,46 +96,8 @@ db.once('open', function() {
 			});
 		});
 
-    router.route('/policy/pdf')
-        .post(function(req, res) {
-			//TODO: check if it is actually a pdf
-			// or not if we are lazy lmao
-			File.write(
-				{filename: req.body.filename,
-				contentType: 'pdf'},
-				fs.createReadStream(req.body.content),
-				function(err, createdFile){
-					if (err) {
-						console.log("there was an error on pdf creation");
-						res.send(err);
-					}
-					res.send({message: "Policy created!", id: File.id });
-				}
-			);
-        });
 
-	router.route('/policy/pdf/:pdf_id')
-		.get(function(req, res) {
-			File.readById(
-				req.params.pdf_id,
-				function(err, pdf_policy) {
-				if (err)
-					res.send(err);
-				res.send(pdf_policy);
-			})
-		})
-
-		.delete(function(req, res) {
-			File.unlinkById(
-				req.params.pdf_id,
-				function(err, pdf_policy) {
-				if (err)
-					res.send(err);
-				res.send({message: 'Successfully deleted'});
-			})
-		});
-
-	router.route('/policy/raw/:raw_id')
+	router.route('/policy/:raw_id')
 		.get(function(req, res) {
 			Raw.findById(
 				req.params.raw_id,
@@ -131,14 +122,6 @@ db.once('open', function() {
 		});
 
 
-	router.route('/policy/raw/all')
-		.get(function(req, res) {
-			Raw.find(function (err, products) {
-				if (err)
-					res.send(err);
-				res.json(products);
-			});
-		});
 
 	//router.get('/policy/add'......
 	//router.get('/policy/delete'......
