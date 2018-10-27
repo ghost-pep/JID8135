@@ -16,6 +16,8 @@ export class PolicyComponent implements OnInit {
   // content = 'Placeholder text';
   selectedPolicy: Policy;
   selectedFile: File;
+  fileContents: string;
+  fileValid: boolean;
   viewEditor = 'edit';
   search = '';
   policies = [
@@ -75,11 +77,16 @@ export class PolicyComponent implements OnInit {
 
   onFileUpload(event){
     this.selectedFile = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = () => {
-      console.log(reader.result);
-    };
-    reader.readAsDataURL(this.selectedFile);
+    if (this.selectedFile.type === "text/plain") {
+      console.log("File valid!");
+      this.fileValid = true;
+      const reader = new FileReader();
+      reader.readAsText(this.selectedFile);
+      reader.onload = () => {
+        console.log(reader.result);
+      };
+    }
+    //reader.readAsDataURL(this.selectedFile);
   }
 
   OnUploadFile() {
