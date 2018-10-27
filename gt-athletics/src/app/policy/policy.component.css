@@ -137,6 +137,10 @@ tr {
 	float: left;
 }
 
+.nohover:hover {
+	pointer-events: none;
+}
+
 .nav li a {
 	display: block;
 	color: black;

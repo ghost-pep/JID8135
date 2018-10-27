@@ -53,6 +53,20 @@ export class PolicyComponent implements OnInit {
     );
   }
 
+  confirmSend() {
+    if (this.selectedPolicy.title == "") {
+      alert("Cannot upload without title");
+    } else if (this.editPolicy.getEditorContent() == "") {
+      if (confirm("Are you sure you want to upload a policy with no body?")) {
+        this.createPolicyClicked();
+      }
+    } else {
+      if (confirm("Do you want to upload this policy?")) {
+        this.createPolicyClicked();
+      }
+    }
+  }
+
   createPolicyClicked() {
     let data = {title: this.selectedPolicy.title, content: this.editPolicy.getEditorContent()};
     this.backend.createRawPolicy(data).subscribe(
