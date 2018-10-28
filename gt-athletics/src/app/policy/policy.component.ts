@@ -84,9 +84,10 @@ export class PolicyComponent implements OnInit {
       reader.readAsText(this.selectedFile);
       reader.onload = () => {
         console.log(reader.result);
+        // document.getElementById('fileModal').modal("toggle");
+        // $('#modal').modal('hide');
       };
     }
-    //reader.readAsDataURL(this.selectedFile);
   }
 
   OnUploadFile() {
