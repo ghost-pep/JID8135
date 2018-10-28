@@ -4,7 +4,8 @@ import { EditPolicyComponent } from '../edit-policy/edit-policy.component';
 import { ViewPolicyComponent } from '../view-policy/view-policy.component';
 import { ViewChild } from '@angular/core';
 import { Policy } from '../policy';
-
+// import { readFileSync } from '../../../node_modules/file-loader';
+// import {readFileSync} from '../../../node_modules/file-loader';
 @Component({
   selector: 'app-policy',
   templateUrl: './policy.component.html',
@@ -34,7 +35,7 @@ export class PolicyComponent implements OnInit {
    }
   ngOnInit() {
   }
-  
+
   addClicked() {
     this.viewEditor = 'edit';
   }
@@ -52,7 +53,24 @@ export class PolicyComponent implements OnInit {
       }
     );
   }
+  fileUpload(file) {
+    console.log(file);
+    this.readFile(file[0]);
+  }
 
+  //Must be a .txt or rtf
+  private readFile(file: File) {
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = function() {
+      //alert(reader.result);
+      console.log(reader.result);
+    };
+    // console.log(reader.result);
+    // let data = readFileSync(file.name);
+    // console.log(data);
+    // return data;
+  }
   createPolicyClicked() {
     let data = {title: this.selectedPolicy.title, content: this.editPolicy.getEditorContent()};
     this.backend.createRawPolicy(data).subscribe(

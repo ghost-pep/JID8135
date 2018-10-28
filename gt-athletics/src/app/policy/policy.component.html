@@ -60,7 +60,7 @@
               <div class="float-right">
                 <ul class="list-inline">
                   <li class="list-inline-item"><p>Upload a file: </p></li>
-                  <li class="list-inline-item"><label class="btn btn-secondary">Browse<input type="file" hidden></label></li>
+                  <li class="list-inline-item"><label class="btn btn-secondary">Browse<input type="file" hidden #file (change)="fileUpload(file.files)"></label></li>
                 </ul>
               </div>
             </div>
