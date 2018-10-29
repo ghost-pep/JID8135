@@ -11,9 +11,9 @@ var mongoose   = require('mongoose');
 var fs		   = require('fs');
 var Raw		   = require('./model/raw.js');
 var multer     = require('multer');
+var PDFDocument = require('pdfkit');
+const spawn		= require('child_process').spawn;
 
-var storage = multer.memoryStorage();
-var upload = multer({ storage: storage });
 
 var con_str = process.env.MONGOCON;
 if (!con_str) {
@@ -44,6 +44,8 @@ db.once('open', function() {
 	// ROUTES FOR OUR API
 	// =============================================================================
 	var router = express.Router();              // get an instance of the express Router
+	var storage = multer.memoryStorage();
+	var upload = multer({ storage: storage });
 
 	// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 	router.get('/', function(req, res) {
@@ -51,13 +53,39 @@ db.once('open', function() {
 	});
 	router.route('/policy')
 
-		.post(function(upload.single('pdf'), req, res) {
+		.post(upload.single('pdf'), function(req, res) {
 			var raw_policy = new Raw();
 			raw_policy.title = req.body.title;
 			raw_policy.content = req.body.content;
 			raw_policy.pdf = req.file.buffer;
 
 			// do conversion to text and to pdf
+			if (!raw_policy.content && raw_policy.pdf) {
+				// convert pdf to text
+				const pdf2text = spawn('pdftotext');
+				pdf2text.stdin.write(raw_policy.pdf);
+				pdf2text.stdout.on('data', (data) => {
+					raw_policy.content = data;
+				});
+				pdf2text.on('close', (code) => {
+					if (code != 0) {
+						console.log('pdf2text failed with code: ${code}');
+					}
+				});
+
+			} else if (!raw_policy.pdf && raw_policy.content) {
+				// convert text to pdf
+				var doc = new PDFDocument();
+				doc.pipe(raw_policy.pdf);
+				doc.text(raw_policy.content);
+				doc.end();
+
+			} else if (!raw_policy.pdf && !raw_policy.content) {
+				// error because no data provided
+				res.send("error: no data provided");
+
+			}
+
 			/**
 			var cp = require('child_process');
 			var optipng = require('pandoc-bin').path; //This is a path to a command
