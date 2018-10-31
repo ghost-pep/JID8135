@@ -220,5 +220,5 @@ a {
 #search-table {
 	overflow-y: scroll;
 	max-height: 50vh;
+    min-height: 50vh;
 }
-
