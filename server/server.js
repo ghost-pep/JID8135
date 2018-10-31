@@ -13,6 +13,8 @@ var Raw		   = require('./model/raw.js');
 var multer     = require('multer');
 var PDFDocument = require('pdfkit');
 const spawn		= require('child_process').spawn;
+const stream = require('stream');
+
 
 
 var con_str = process.env.MONGOCON;
@@ -54,31 +56,40 @@ db.once('open', function() {
 	router.route('/policy')
 
 		.post(upload.single('pdf'), function(req, res) {
+			console.log("found a post request");
 			var raw_policy = new Raw();
 			raw_policy.title = req.body.title;
-			raw_policy.content = req.body.content;
-			raw_policy.pdf = req.file.buffer;
 
 			// do conversion to text and to pdf
-			if (!raw_policy.content && raw_policy.pdf) {
+			if (!req.body.content && typeof req.file !== 'undefined' && req.file) {
 				// convert pdf to text
-				const pdf2text = spawn('pdftotext');
-				pdf2text.stdin.write(raw_policy.pdf);
+				raw_policy.pdf = req.file.buffer;
+				const pdf2text = spawn('/usr/bin/pdftotext');
+				console.log('spawned pdf2text');
+				pdf2text.stdin.write(req.file.buffer);
 				pdf2text.stdout.on('data', (data) => {
+					console.log('setting content from the pdf content');
 					raw_policy.content = data;
 				});
 				pdf2text.on('close', (code) => {
 					if (code != 0) {
-						console.log('pdf2text failed with code: ${code}');
+						console.log('pdf2text failed with code: ' + code);
 					}
 				});
 
-			} else if (!raw_policy.pdf && raw_policy.content) {
+			} else if (typeof req.file === 'undefined' && req.body.content) {
+				console.log("starting text to pdf");
+				raw_policy.content = req.body.content;
 				// convert text to pdf
+				var contentstream = stream.Writable();
 				var doc = new PDFDocument();
-				doc.pipe(raw_policy.pdf);
+				doc.pipe(contentstream);
 				doc.text(raw_policy.content);
 				doc.end();
+				contentstream._write = function(chunk, encoding, done) {
+					console.log("writing to raw policy content from pdf data");
+					raw_policy.content = raw_policy.content + chunk.toString();
+				};
 
 			} else if (!raw_policy.pdf && !raw_policy.content) {
 				// error because no data provided
