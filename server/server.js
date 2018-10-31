@@ -66,7 +66,14 @@ db.once('open', function() {
 				raw_policy.pdf = req.file.buffer;
 				const pdf2text = spawn('/usr/bin/pdftotext');
 				console.log('spawned pdf2text');
-				pdf2text.stdin.write(req.file.buffer);
+//				console.log('file buffer content: ' + req.file.buffer.toString());
+				// put the data in a file
+				var child_pid = pdf2text.pid;
+				var filename = "pdf2text" + child_pid + ".pdf";
+				var createStream = fs.createWriteStream(filename);
+				createStream.write(req.file.buffer.toString());
+				createStream.end();
+				pdf2text.stdin.write(filename);
 				pdf2text.stdout.on('data', (data) => {
 					console.log('setting content from the pdf content');
 					raw_policy.content = data;
