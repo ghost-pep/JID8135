@@ -12,11 +12,13 @@
           <th class="title">Table of Contents</th>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <a href = "#" class="toc-link">Georgia Tech Athletics Compliance Manual</a>
-            </td>
-          </tr>
+          <div *ngFor="let policy of policies">
+            <tr>
+              <td>
+                <a class="toc-link" (click)="itemClicked('view', policy._id);"> {{policy.title}} </a> <!-- Georgia Tech Athletics Compliance Manual -->
+              </td>
+            </tr>
+          <!--
           <tr>
             <td>
               <a href = "#" class="toc-link">Mobile Device Policy</a>
@@ -47,6 +49,8 @@
                 <a href = "#" class="toc-link">Communication Standards</a>
               </td>
             </tr>
+          -->
+          </div>
          </tbody>
       </table>
     </div>
