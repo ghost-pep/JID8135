@@ -79,20 +79,31 @@ export class PolicyComponent implements OnInit {
     this.selectedFile = event.target.files[0];
     if (this.selectedFile.type === "text/plain") {
       console.log("File valid!");
-      this.fileValid = true;
-      const reader = new FileReader();
-      reader.readAsText(this.selectedFile);
-      reader.onload = () => {
-        console.log(reader.result);
-        // document.getElementById('fileModal').modal("toggle");
-        // $('#modal').modal('hide');
-      };
+      let yes = confirm(`Do you want to upload ${this.selectedFile.name}?`);
+      if (yes) {
+          const reader = new FileReader();
+          reader.readAsText(this.selectedFile);
+          reader.onload = () => {
+            console.log(reader.result);
+            let data = {
+                title: "Sample Title",
+                content: "Sample Content"
+            }
+            this.backend.uploadRawPolicy(data).subscribe(
+                (res) => {
+                    console.log(res);
+                }
+            );
+            // document.getElementById('fileModal').modal("toggle");
+            // $('#modal').modal('hide');
+          };
+      }
     }
   }
 
   OnUploadFile() {
     //Upload file here send a binary data
-    this.backend.uploadPolicy().subscribe(
+    this.backend.uploadPdfPolicy().subscribe(
       (res) => {
         console.log(res);
       }

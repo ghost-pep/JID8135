@@ -45,7 +45,18 @@ export class BackendService {
     );
   }
 
-  uploadPolicy(): Observable<any> {
+  uploadRawPolicy(data: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      withCredentials: false,
+    };
+    return this.http.post<any>(this.url + 'api/policy/raw/', JSON.stringify(data), httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  uploadPdfPolicy(): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
       withCredentials: false,
