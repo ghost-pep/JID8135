@@ -60,10 +60,8 @@
               <div class="float-right">
                 <ul class="list-inline">
                   <li class="list-inline-item"><p>Upload a file: </p></li>
-                  <li class="list-inline-item">
-                    <label class="btn btn-secondary">
-                      <input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile />
-                      <button (click)="selectFile.click()">Select File</button>
+                  <li class="list-inline-item"><input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile /><button class="btn btn-secondary" (click)="selectFile.click()">Browse</button></li>
+
                       <!--
                       <div class="modal fade" role="dialog" id="fileModal" *ngIf="true">
                         <div class="modal-dialog">
@@ -84,8 +82,6 @@
                       <!--
                       <button (click)="OnUploadFile()">Upload</button>
                       -->
-                    </label>
-                  </li>
                 </ul>
               </div>
             </div>
