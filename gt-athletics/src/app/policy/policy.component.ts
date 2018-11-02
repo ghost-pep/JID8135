@@ -86,8 +86,8 @@ export class PolicyComponent implements OnInit {
           reader.onload = () => {
             console.log(reader.result);
             let data = {
-                title: "Sample Title",
-                content: "Sample Content"
+                title: this.selectedFile.name,
+                content: reader.result
             }
             this.backend.uploadRawPolicy(data).subscribe(
                 (res) => {
