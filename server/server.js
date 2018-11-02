@@ -23,6 +23,8 @@ if (!con_str) {
 	process.exit();
 }
 
+var pdf_temp_id = 0;
+
 // connect mongoose
 mongoose.connect(con_str);
 var db = mongoose.connection;
@@ -64,25 +66,26 @@ db.once('open', function() {
 			if (!req.body.content && typeof req.file !== 'undefined' && req.file) {
 				// convert pdf to text
 				raw_policy.pdf = req.file.buffer;
-				const pdf2text = spawn('/usr/bin/pdftotext');
-				console.log('spawned pdf2text');
 //				console.log('file buffer content: ' + req.file.buffer.toString());
 				// put the data in a file
-				var child_pid = pdf2text.pid;
-				var filename = "pdf2text" + child_pid + ".pdf";
+				var filename = "./pdf2text" + pdf_temp_id + ".pdf";
+                                pdf_temp_id = pdf_temp_id + 1;       
 				var createStream = fs.createWriteStream(filename);
 				createStream.write(req.file.buffer.toString());
 				createStream.end();
-				pdf2text.stdin.write(filename);
+				const pdf2text = spawn('/usr/bin/pdftotext', [filename]);
+				console.log('spawned pdf2text');
 				pdf2text.stdout.on('data', (data) => {
 					console.log('setting content from the pdf content');
-					raw_policy.content = data;
+				        raw_policy.content = data;
+                                        console.log(data)
 				});
 				pdf2text.on('close', (code) => {
 					if (code != 0) {
 						console.log('pdf2text failed with code: ' + code);
 					}
 				});
+				pdf2text.stdin.write(filename);
 
 			} else if (typeof req.file === 'undefined' && req.body.content) {
 				console.log("starting text to pdf");
@@ -98,7 +101,7 @@ db.once('open', function() {
 					raw_policy.content = raw_policy.content + chunk.toString();
 				};
 
-			} else if (!raw_policy.pdf && !raw_policy.content) {
+			} else {
 				// error because no data provided
 				res.send("error: no data provided");
 
