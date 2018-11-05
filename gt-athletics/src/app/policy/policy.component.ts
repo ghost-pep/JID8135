@@ -90,15 +90,17 @@ export class PolicyComponent implements OnInit {
                 (res) => {
                     alert("Policy already exists.");
                     return;
-                }
-            );
-            let data = {
-                title: newTitle,
-                content: reader.result
-            }
-            this.backend.uploadRawPolicy(data).subscribe(
-                (res) => {
-                    console.log(res);
+                },
+                (err) => {
+                    let data = {
+                        title: newTitle,
+                        content: reader.result
+                    }
+                    this.backend.uploadRawPolicy(data).subscribe(
+                        (res) => {
+                            console.log(res);
+                        }
+                    );
                 }
             );
             // document.getElementById('fileModal').modal("toggle");
