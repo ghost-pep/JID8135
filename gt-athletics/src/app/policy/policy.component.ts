@@ -85,8 +85,15 @@ export class PolicyComponent implements OnInit {
           reader.readAsText(this.selectedFile);
           reader.onload = () => {
             console.log(reader.result);
+            let newTitle = prompt("Title of policy: ");
+            this.backend.getPolicyTitle(newTitle).subscribe(
+                (res) => {
+                    alert("Policy already exists.");
+                    return;
+                }
+            );
             let data = {
-                title: this.selectedFile.name,
+                title: newTitle,
                 content: reader.result
             }
             this.backend.uploadRawPolicy(data).subscribe(

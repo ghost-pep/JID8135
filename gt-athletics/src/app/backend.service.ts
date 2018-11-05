@@ -45,6 +45,17 @@ export class BackendService {
     );
   }
 
+  getPolicyTitle(_title: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      withCredentials: false,
+    };
+    return this.http.get<any>(this.url + 'api/policy/raw/title/' + _title, httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
   uploadRawPolicy(data: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'}),
