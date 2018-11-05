@@ -1,0 +1,3 @@
+1. Add another alert to check for duplicate file, otherwise no alert
+2. Title shouldn't have .txt or .rtf at the end
+3. Add alert to add title to policy

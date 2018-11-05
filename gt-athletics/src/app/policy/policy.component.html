@@ -65,7 +65,28 @@
               <div class="float-right">
                 <ul class="list-inline">
                   <li class="list-inline-item"><p>Upload a file: </p></li>
-                  <li class="list-inline-item"><label class="btn btn-secondary">Browse<input type="file" hidden></label></li>
+                  <li class="list-inline-item"><input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile /><button class="btn btn-secondary" (click)="selectFile.click()">Browse</button></li>
+
+                      <!--
+                      <div class="modal fade" role="dialog" id="fileModal" *ngIf="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Verify Upload</h4>
+                            <div class="modal-body">
+                              <p>Are you sure you want to upload this file?</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-default" data-dismiss="modal" (click)="verifyUpload()">Yes</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      -->
+                      <!--
+                      <button (click)="OnUploadFile()">Upload</button>
+                      -->
                 </ul>
               </div>
             </div>

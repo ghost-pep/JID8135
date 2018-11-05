@@ -4,6 +4,7 @@ import { EditPolicyComponent } from '../edit-policy/edit-policy.component';
 import { ViewPolicyComponent } from '../view-policy/view-policy.component';
 import { ViewChild } from '@angular/core';
 import { Policy } from '../policy';
+import {Http, Response, RequestOptions, Headers} from '@angular/http';
 
 @Component({
   selector: 'app-policy',
@@ -14,6 +15,9 @@ export class PolicyComponent implements OnInit {
   @ViewChild(EditPolicyComponent) editPolicy;
   // content = 'Placeholder text';
   selectedPolicy: Policy;
+  selectedFile: File;
+  fileContents: string;
+  fileValid: boolean;
   viewEditor = 'edit';
   search = '';
   policies = [
@@ -84,4 +88,47 @@ export class PolicyComponent implements OnInit {
       }
     );
   }
+
+  onFileUpload(event){
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile.type === "text/plain") {
+      console.log("File valid!");
+      let yes = confirm(`Do you want to upload ${this.selectedFile.name}?`);
+      if (yes) {
+          const reader = new FileReader();
+          reader.readAsText(this.selectedFile);
+          reader.onload = () => {
+            console.log(reader.result);
+            let newTitle = prompt("Title of policy: ");
+            this.backend.getPolicyTitle(newTitle).subscribe(
+                (res) => {
+                    alert("Policy already exists.");
+                    return;
+                }
+            );
+            let data = {
+                title: newTitle,
+                content: reader.result
+            }
+            this.backend.uploadRawPolicy(data).subscribe(
+                (res) => {
+                    console.log(res);
+                }
+            );
+            // document.getElementById('fileModal').modal("toggle");
+            // $('#modal').modal('hide');
+          };
+      }
+    }
+  }
+
+  OnUploadFile() {
+    //Upload file here send a binary data
+    this.backend.uploadPdfPolicy().subscribe(
+      (res) => {
+        console.log(res);
+      }
+    );
+  }
+
 }
