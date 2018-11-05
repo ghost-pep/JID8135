@@ -24,6 +24,8 @@ if (!con_str) {
 }
 
 var pdf_temp_id = 0;
+let cwd = process.cwd();
+console.log("cwd: " + cwd);
 
 // connect mongoose
 mongoose.connect(con_str);
@@ -60,6 +62,10 @@ db.once('open', function() {
 		.post(upload.single('pdf'), function(req, res) {
 			console.log("found a post request");
 			var raw_policy = new Raw();
+                        if (req.body.title === 'undefined' || req.body.title === "") {
+                            res.send("no title set");
+                            return
+                        }
 			raw_policy.title = req.body.title;
 
 			// do conversion to text and to pdf
@@ -68,24 +74,37 @@ db.once('open', function() {
 				raw_policy.pdf = req.file.buffer;
 //				console.log('file buffer content: ' + req.file.buffer.toString());
 				// put the data in a file
-				var filename = "./pdf2text" + pdf_temp_id + ".pdf";
+				var filename = cwd + "/save" + "/pdf2text" + pdf_temp_id + ".pdf";
+				var text_filename = cwd + "/save" + "/pdf2text" + pdf_temp_id + ".txt";
                                 pdf_temp_id = pdf_temp_id + 1;       
 				var createStream = fs.createWriteStream(filename);
-				createStream.write(req.file.buffer.toString());
+				createStream.write(req.file.buffer);
 				createStream.end();
-				const pdf2text = spawn('/usr/bin/pdftotext', [filename]);
+				let pdf2text = spawn('/usr/bin/pdftotext', [filename, text_filename]);
 				console.log('spawned pdf2text');
-				pdf2text.stdout.on('data', (data) => {
-					console.log('setting content from the pdf content');
-				        raw_policy.content = data;
-                                        console.log(data)
-				});
+				// pdf2text.stdout.on('data', (data) => {
+				// 	console.log('setting content from the pdf content');
+				//         raw_policy.content = data;
+                                        // console.log(data)
+				// });
 				pdf2text.on('close', (code) => {
 					if (code != 0) {
 						console.log('pdf2text failed with code: ' + code);
 					}
+                                        // now we can load the text into the raw_policy.content
+                                        fs.readFile(text_filename, (err, data) => {
+                                            if (err)
+                                                console.log("error " + err + " opening file " + text_filename);
+                                            console.log("got pdf2text text: \n" + data);
+                                            raw_policy.content = data;
+                                            raw_policy.save(function(err) {
+                                                    if (err)
+                                                            res.send(err);
+
+                                                    res.json({ message: 'Raw policy created!', id: raw_policy.id });
+                                            });
+                                        });
 				});
-				pdf2text.stdin.write(filename);
 
 			} else if (typeof req.file === 'undefined' && req.body.content) {
 				console.log("starting text to pdf");
@@ -93,13 +112,19 @@ db.once('open', function() {
 				// convert text to pdf
 				var contentstream = stream.Writable();
 				var doc = new PDFDocument();
+				contentstream._write = function(chunk, encoding, done) {
+					console.log("writing to raw policy content from pdf data");
+					raw_policy.pdf =raw_policy.pdf + chunk.toString();
+				};
 				doc.pipe(contentstream);
 				doc.text(raw_policy.content);
 				doc.end();
-				contentstream._write = function(chunk, encoding, done) {
-					console.log("writing to raw policy content from pdf data");
-					raw_policy.content = raw_policy.content + chunk.toString();
-				};
+                                raw_policy.save(function(err) {
+                                        if (err)
+                                                res.send(err);
+
+                                        res.json({ message: 'Raw policy created!', id: raw_policy.id });
+                                });
 
 			} else {
 				// error because no data provided
@@ -130,12 +155,12 @@ db.once('open', function() {
 			stdinStream.pipe(child.stdin);
 			*/
 
-			raw_policy.save(function(err) {
-				if (err)
-					res.send(err);
+			// raw_policy.save(function(err) {
+			// 	if (err)
+			// 		res.send(err);
 
-				res.json({ message: 'Raw policy created!', id: raw_policy.id });
-			});
+			// 	res.json({ message: 'Raw policy created!', id: raw_policy.id });
+			// });
 		})
 		.get(function(req, res) {
 			Raw.find(function (err, products) {
