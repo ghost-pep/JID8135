@@ -5,6 +5,7 @@ import { ViewPolicyComponent } from '../view-policy/view-policy.component';
 import { ViewChild } from '@angular/core';
 import { Policy } from '../policy';
 import {Http, Response, RequestOptions, Headers} from '@angular/http';
+import {saveAs} from 'file-saver';
 
 @Component({
   selector: 'app-policy',
@@ -38,7 +39,7 @@ export class PolicyComponent implements OnInit {
    }
   ngOnInit() {
   }
-  
+
   addClicked() {
     this.viewEditor = 'edit';
   }
@@ -57,10 +58,23 @@ export class PolicyComponent implements OnInit {
     );
   }
 
+  downloadClick() {
+    console.log(this.selectedPolicy);
+    if (!((this.selectedPolicy.title) || (this.selectedPolicy.content) || (this.selectedPolicy._id))) { //if selected policy is blank
+      return;
+    }
+    let blob = new Blob([this.selectedPolicy.content], {
+        type: 'text/plain;charset=utf-8;',
+        // type: 'text/html;'
+        // type: 'application/msword;'
+    });
+    saveAs(blob, this.selectedPolicy.title + '.txt');
+  }
+
   confirmSend() {
-    if (this.selectedPolicy.title == "") {
+    if (this.selectedPolicy.title === '') {
       alert("Cannot upload without title");
-    } else if (this.editPolicy.getEditorContent() == "") {
+    } else if (this.editPolicy.getEditorContent() === '') {
       if (confirm("Are you sure you want to upload a policy with no body?")) {
         this.createPolicyClicked();
       }
