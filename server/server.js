@@ -17,12 +17,14 @@ const stream = require('stream');
 
 
 
+// get the connection string from the environment
 var con_str = process.env.MONGOCON;
 if (!con_str) {
 	console.log("No connection string provided in env MONGOCON");
 	process.exit();
 }
 
+// set some global variables used below (directory, unique filename incrementer, etc)
 var pdf_temp_id = 0;
 let cwd = process.cwd();
 console.log("cwd: " + cwd);
@@ -34,13 +36,13 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 	// we're connected!
 	console.log('connected!');
+        // connect to gridfs
 	var gridfs = require('mongoose-gridfs')({
 	  mongooseConnection: mongoose.connection
 	});
-
 	var File = gridfs.model;
 
-	// configure ap to use bodyParser()
+	// configure app to use bodyParser()
 	// this will let us get the data from a POST
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json());
@@ -49,6 +51,7 @@ db.once('open', function() {
 
 	// ROUTES FOR OUR API
 	// =============================================================================
+        // use multer package to store files uploaded as multipart data in memory
 	var router = express.Router();              // get an instance of the express Router
 	var storage = multer.memoryStorage();
 	var upload = multer({ storage: storage });
@@ -59,6 +62,7 @@ db.once('open', function() {
 	});
 	router.route('/policy')
 
+                // a post request on /api/policy that is the add policy functionality
 		.post(upload.single('pdf'), function(req, res) {
 			console.log("found a post request");
 			var raw_policy = new Raw();
@@ -82,11 +86,6 @@ db.once('open', function() {
 				createStream.end();
 				let pdf2text = spawn('/usr/bin/pdftotext', [filename, text_filename]);
 				console.log('spawned pdf2text');
-				// pdf2text.stdout.on('data', (data) => {
-				// 	console.log('setting content from the pdf content');
-				//         raw_policy.content = data;
-                                        // console.log(data)
-				// });
 				pdf2text.on('close', (code) => {
 					if (code != 0) {
 						console.log('pdf2text failed with code: ' + code);
@@ -132,36 +131,9 @@ db.once('open', function() {
 
 			}
 
-			/**
-			var cp = require('child_process');
-			var optipng = require('pandoc-bin').path; //This is a path to a command
-			var child = cp.spawn(optipng, ['--from=markdown', '--to=html']); //the array is the arguments
-
-			child.stdin.write('# HELLO'); //my command takes a markdown string...
-
-			child.stdout.on('data', function (data) {
-				console.log('stdout: ' + data);
-			});
-			child.stdin.end();
-			**/
-
-
-			// create child
-			// pass the input to the child
-			/*
-			var stdinStream = new stream.Readable();
-			stdinStream.push(input);  // Add data to the internal queue for users of the stream to consume
-			stdinStream.push(null);   // Signals the end of the stream (EOF)
-			stdinStream.pipe(child.stdin);
-			*/
-
-			// raw_policy.save(function(err) {
-			// 	if (err)
-			// 		res.send(err);
-
-			// 	res.json({ message: 'Raw policy created!', id: raw_policy.id });
-			// });
 		})
+                
+                // functionality for a get request on /api/policy should be a getall data objects
 		.get(function(req, res) {
 			Raw.find(function (err, products) {
 				if (err)
@@ -172,6 +144,8 @@ db.once('open', function() {
 
 
 	router.route('/policy/:raw_id')
+
+                // get on /api/policy/number will get the policy associated with that unique id
 		.get(function(req, res) {
 			Raw.findById(
 				req.params.raw_id,
@@ -184,6 +158,7 @@ db.once('open', function() {
 		})
 
 
+                // allow deletion of policies based on their unique mongo id
 		.delete(function(req, res) {
 			Raw.remove({
 				_id: req.params.raw_id
@@ -195,13 +170,6 @@ db.once('open', function() {
 			});
 		});
 
-
-
-	//router.get('/policy/add'......
-	//router.get('/policy/delete'......
-	//router.get('/policy/download'......
-
-	// more routes for our API will happen here
 
 	// REGISTER OUR ROUTES -------------------------------
 	// all of our routes will be prefixed with /api
