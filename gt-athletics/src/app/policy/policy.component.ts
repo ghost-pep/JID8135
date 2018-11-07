@@ -63,12 +63,26 @@ export class PolicyComponent implements OnInit {
     if (!((this.selectedPolicy.title) || (this.selectedPolicy.content) || (this.selectedPolicy._id))) { //if selected policy is blank
       return;
     }
-    let blob = new Blob([this.selectedPolicy.content], {
-        type: 'text/plain;charset=utf-8;',
-        // type: 'text/html;'
-        // type: 'application/msword;'
+    // var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+    var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'><head><meta charset='utf-8'></head><body>";
+    var postHtml = "</body></html>";
+
+    let parser = new DOMParser();
+    // let html = preHtml + parser.parseFromString(this.selectedPolicy.content, 'text/html') + postHtml;
+    let html = preHtml + this.selectedPolicy.content + postHtml;
+    console.log(html);
+    let blob = new Blob(['\ufeff', html], {
+      type: 'application/vnd.ms-word;charset=utf-8;'
     });
-    saveAs(blob, this.selectedPolicy.title + '.txt');
+
+    // let blob = new Blob([this.selectedPolicy.content], {
+    //     // type: 'text/plain;charset=utf-8;',
+    //     // type: 'text/html;'
+    //     // type: 'application/msword;'
+    // });
+
+
+    saveAs(blob, this.selectedPolicy.title + '.doc');
   }
 
   confirmSend() {
