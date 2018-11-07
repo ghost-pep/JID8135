@@ -108,7 +108,7 @@
             <button [ngClass]="viewEditor==='edit' ? 'btn blank' : 'btn blank nohover'" (click)="confirmSend()" [disabled]="viewEditor==='view'"><i class="fa fa-paper-plane" style="font-size: 36px"></i></button>
           </li>
           <li class="list-group-item blank-item">
-            <button class="btn blank"><i class="fa fa-download" style="font-size: 36px" (click)="downloadClick()"></i></button>
+            <button class="btn blank" (click)="downloadClick()"><i class="fa fa-download" style="font-size: 36px"></i></button>
           </li>
         </ul>
       </div>
