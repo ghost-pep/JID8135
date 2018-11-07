@@ -130,20 +130,22 @@ export class PolicyComponent implements OnInit {
             let newTitle = prompt("Title of policy: ");
             this.backend.getPolicyTitle(newTitle).subscribe(
                 (res) => {
-                    alert("Policy already exists.");
-                    return;
-                },
-                (err) => {
-                    let data = {
-                        title: newTitle,
-                        content: reader.result
-                    }
-                    this.backend.uploadRawPolicy(data).subscribe(
-                        (res) => {
-                            console.log(res);
+                    // Check if a policy already exists with that title
+                    if (res.length > 0) {
+                        alert("Policy already exists.");
+                        return;
+                    } else {
+                        let data = {
+                            title: newTitle,
+                            content: reader.result
                         }
-                    );
-                }
+                        this.backend.uploadRawPolicy(data).subscribe(
+                            (res) => {
+                                console.log(res);
+                            }
+                        );
+                    }
+                },
             );
             // document.getElementById('fileModal').modal("toggle");
             // $('#modal').modal('hide');
