@@ -108,7 +108,7 @@ export class PolicyComponent implements OnInit {
 
   onFileUpload(event) {
     this.selectedFile = event.target.files[0];
-    if (this.selectedFile.name.split('.')[1] === "rtf" || this.selectedFile.name.split('.')[1] === "txt") {
+    if (this.selectedFile.type === "text/plain") {
       console.log("File valid!");
       let yes = confirm(`Do you want to upload ${this.selectedFile.name}?`);
       if (yes) {

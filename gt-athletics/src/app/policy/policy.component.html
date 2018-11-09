@@ -13,9 +13,11 @@
         </thead>
         <tbody>
           <div *ngFor="let policy of policies">
-            <tr>
+            <tr class="toc-box">
               <td>
-                <a class="toc-link" (click)="itemClicked('view', policy._id);"> {{policy.title}} </a> <!-- Georgia Tech Athletics Compliance Manual -->
+                <div class="toc-div">
+                  <a class="toc-link" (click)="itemClicked('view', policy._id);"> {{policy.title}} </a> <!-- Georgia Tech Athletics Compliance Manual -->
+                </div>
               </td>
             </tr>
           <!--
@@ -108,7 +110,7 @@
             <button [ngClass]="viewEditor==='edit' ? 'btn blank' : 'btn blank nohover'" (click)="confirmSend()" [disabled]="viewEditor==='view'"><i class="fa fa-paper-plane" style="font-size: 36px"></i></button>
           </li>
           <li class="list-group-item blank-item">
-            <button class="btn blank" (click)="downloadClick()"><i class="fa fa-download" style="font-size: 36px"></i></button>
+            <button [ngClass]="viewEditor==='edit' ? 'btn blank nohover' : 'btn blank'" (click)="downloadClick()" [disabled]="viewEditor==='edit'"><i class="fa fa-download" style="font-size: 36px"></i></button>
           </li>
         </ul>
       </div>

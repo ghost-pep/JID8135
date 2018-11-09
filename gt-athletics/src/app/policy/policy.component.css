@@ -1,9 +1,9 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-tr {
+/*tr {
     background-color: #EAB543;
     text-align: center;
     border: 2px solid black;
-}
+}*/
 
 .row {
 	padding-left: 20px;
@@ -67,9 +67,20 @@ a {
 	/*border-bottom: 4px solid #EEB211;*/
 }
 
+.toc-box {
+    background-color: #EAB543;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.toc-div {
+	min-width: 340px;
+}
+
 .toc-link {
 	color: black;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 #bottom {
@@ -84,12 +95,6 @@ a {
 	max-width: 65vw;
 }
 /** /modal **/
-
-tr {
-    background-color: #EAB543;
-    text-align: center;
-    border: 2px solid black;
-}
 
 .row {
 	padding-left: 20px;
@@ -221,4 +226,8 @@ a {
 	overflow-y: scroll;
 	max-height: 50vh;
     min-height: 50vh;
+}
+
+.list-group-item {
+	cursor: pointer;
 }
