@@ -12,46 +12,14 @@
           <th class="title">Table of Contents</th>
         </thead>
         <tbody>
-          <div *ngFor="let policy of policies">
+          <div *ngFor="let policy of policies" style="padding-top: 2px">
             <tr class="toc-box">
               <td>
                 <div class="toc-div">
-                  <a class="toc-link" (click)="itemClicked('view', policy._id);"> {{policy.title}} </a> <!-- Georgia Tech Athletics Compliance Manual -->
+                  <a class="toc-link" (click)="itemClicked('view', policy._id);"> {{policy.title}} </a>
                 </div>
               </td>
             </tr>
-          <!--
-          <tr>
-            <td>
-              <a href = "#" class="toc-link">Mobile Device Policy</a>
-            </td>
-            </tr>
-            <tr>
-              <td>
-                <a href = "#" class="toc-link">Moving and Relocation Policy</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href = "#" class="toc-link">Student Athlete Academic Support Services 2016-2017 Handbook</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href = "#" class="toc-link">Taxability of Complimentary Football Tickets - Season and Single Game</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href = "#" class="toc-link">Complimentary Men’s and Women’s Basketball Tickets</a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <a href = "#" class="toc-link">Communication Standards</a>
-              </td>
-            </tr>
-          -->
           </div>
          </tbody>
       </table>
@@ -68,27 +36,6 @@
                 <ul class="list-inline">
                   <li class="list-inline-item"><p>Upload a file: </p></li>
                   <li class="list-inline-item"><input style="display: none" type="file" (change)="onFileUpload($event)" #selectFile /><button class="btn btn-secondary" (click)="selectFile.click()">Browse</button></li>
-
-                      <!--
-                      <div class="modal fade" role="dialog" id="fileModal" *ngIf="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Verify Upload</h4>
-                            <div class="modal-body">
-                              <p>Are you sure you want to upload this file?</p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal" (click)="verifyUpload()">Yes</button>
-                              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      -->
-                      <!--
-                      <button (click)="OnUploadFile()">Upload</button>
-                      -->
                 </ul>
               </div>
             </div>
@@ -110,12 +57,13 @@
             <button [ngClass]="viewEditor==='edit' ? 'btn blank' : 'btn blank nohover'" (click)="confirmSend()" [disabled]="viewEditor==='view'"><i class="fa fa-paper-plane" style="font-size: 36px"></i></button>
           </li>
           <li class="list-group-item blank-item">
-            <button [ngClass]="viewEditor==='edit' ? 'btn blank nohover' : 'btn blank'" (click)="downloadClick()" [disabled]="viewEditor==='edit'"><i class="fa fa-download" style="font-size: 36px"></i></button>
+            <button [ngClass]="viewEditor==='view' ? 'btn blank' : 'btn blank nohover'" (click)="downloadClick()" [disabled]="viewEditor==='edit'"><i class="fa fa-download" style="font-size: 36px"></i></button>
           </li>
         </ul>
       </div>
   </div>
 </div>
+
 <!--Modal-->
 <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

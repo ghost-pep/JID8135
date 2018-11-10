@@ -151,5 +151,4 @@ export class PolicyComponent implements OnInit {
       }
     );
   }
-
 }
