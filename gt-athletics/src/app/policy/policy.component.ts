@@ -57,6 +57,10 @@ export class PolicyComponent implements OnInit {
       }
     );
   }
+  fileUpload(file) {
+    console.log(file);
+    this.readFile(file[0]);
+  }
 
   downloadClick() {
     console.log(this.selectedPolicy);
