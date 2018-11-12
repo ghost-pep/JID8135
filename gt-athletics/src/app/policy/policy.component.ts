@@ -38,6 +38,7 @@ export class PolicyComponent implements OnInit {
     };
    }
   ngOnInit() {
+    this.searchClicked();
   }
 
   addClicked() {
@@ -57,10 +58,10 @@ export class PolicyComponent implements OnInit {
       }
     );
   }
-  fileUpload(file) {
+  /*fileUpload(file) {
     console.log(file);
     this.readFile(file[0]);
-  }
+  }*/
 
   downloadClick() {
     console.log(this.selectedPolicy);
