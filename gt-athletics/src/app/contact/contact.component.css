@@ -2,6 +2,9 @@ h1 {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	color: #89807D;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 p {
@@ -17,6 +20,7 @@ p {
 
 .row {
 	width: 95%;
+	padding-top: 10%;
 }
 
 .wrapper {

@@ -13,8 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { EditPolicyComponent } from './edit-policy/edit-policy.component';
 import { ViewPolicyComponent } from './view-policy/view-policy.component';
 import { ContactComponent } from './contact/contact.component';
-import { HrFormsComponent } from './hr-forms/hr-forms.component';
-import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +22,7 @@ import { AboutComponent } from './about/about.component';
     HomeComponent,
     EditPolicyComponent,
     ViewPolicyComponent,
-    ContactComponent,
-    HrFormsComponent,
-    AboutComponent
+    ContactComponent
   ],
   imports: [
     BrowserModule,

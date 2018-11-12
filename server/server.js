@@ -53,17 +53,22 @@ db.once('open', function() {
 			raw_policy.content = req.body.content;
 
 			raw_policy.save(function(err) {
-				if (err)
+				if (err) {
+                    console.log(err);
 					res.send(err);
-
-				res.json({ message: 'Raw policy created!', id: raw_policy.id });
+                }
+                else {
+                    console.log("Raw policy added");
+			        res.json({ message: 'Raw policy created!', id: raw_policy.id });
+                }
 			});
 		})
 		.get(function(req, res) {
 			Raw.find(function (err, products) {
 				if (err)
 					res.send(err);
-				res.json(products);
+                else
+				    res.json(products);
 			});
 		});
 
@@ -79,8 +84,9 @@ db.once('open', function() {
 					if (err) {
 						console.log("there was an error on pdf creation");
 						res.send(err);
-					}
-					res.send({message: "Policy created!", id: File.id });
+					} else {
+					    res.send({message: "Policy created!", id: File.id });
+                    }
 				}
 			);
         });
@@ -92,7 +98,8 @@ db.once('open', function() {
 				function(err, pdf_policy) {
 				if (err)
 					res.send(err);
-				res.send(pdf_policy);
+                else
+				    res.send(pdf_policy);
 			})
 		})
 
@@ -102,7 +109,8 @@ db.once('open', function() {
 				function(err, pdf_policy) {
 				if (err)
 					res.send(err);
-				res.send({message: 'Successfully deleted'});
+                else
+				    res.send({message: 'Successfully deleted'});
 			})
 		});
 
@@ -113,8 +121,8 @@ db.once('open', function() {
 				function(err, raw_policy) {
 					if (err)
 						res.send(err);
-
-					res.json(raw_policy);
+                    else
+					    res.json(raw_policy);
 				});
 		})
 
@@ -125,8 +133,18 @@ db.once('open', function() {
 			}, function(err, raw_policy) {
 				if (err)
 					res.send(err);
+                else
+				    res.json({message: 'Successfully deleted' });
+			});
+		});
 
-				res.json({message: 'Successfully deleted' });
+	router.route('/policy/raw/title/:title')
+		.get(function(req, res) {
+			Raw.find( { title: req.params.title }, function (err, products) {
+				if (err)
+					res.send(err);
+                else
+				    res.json(products);
 			});
 		});
 
@@ -136,7 +154,8 @@ db.once('open', function() {
 			Raw.find(function (err, products) {
 				if (err)
 					res.send(err);
-				res.json(products);
+                else
+				    res.json(products);
 			});
 		});
 

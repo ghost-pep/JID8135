@@ -1,9 +1,4 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-tr {
-    background-color: #EAB543;
-    text-align: center;
-    border: 2px solid black;
-}
 
 .row {
 	padding-left: 20px;
@@ -11,14 +6,7 @@ tr {
 	padding-top:10px;
 }
 
-/** FOR DEBUGGING ONLY **/
-#border {
-	/* border: 2px solid black; */
-}
-/** /FOR DEBUGGING ONLY **/
-
 /** Title Toolbar **/
-
 .title-toolbar ul {
 	list-style-type: none;
 	margin: 0;
@@ -31,11 +19,7 @@ tr {
 .title-toolbar li a {
 	padding: 12px;
 }
-
 /** /Title Toolbar **/
-
-/** Sidebar **/
-/** /Sidebar **/
 
 /** custom buttons **/
 .blank {
@@ -64,12 +48,24 @@ a {
 /** /links **/
 
 .title {
-	/*border-bottom: 4px solid #EEB211;*/
+	border-bottom: 4px solid #EEB211;
+}
+
+.toc-box {
+    background-color: #EAB543;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.toc-div {
+	min-width: 22.5vw;
+	max-width: 22.5vw;
 }
 
 .toc-link {
 	color: black;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 #bottom {
@@ -85,25 +81,11 @@ a {
 }
 /** /modal **/
 
-tr {
-    background-color: #EAB543;
-    text-align: center;
-    border: 2px solid black;
-}
-
 .row {
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top:10px;
 }
-
-/** FOR DEBUGGING ONLY **/
-#border {
-	/*border: 2px solid black;*/
-}
-/** /FOR DEBUGGING ONLY **/
-
-
 
 /** Navbar **/
 .active {
@@ -137,6 +119,10 @@ tr {
 	float: left;
 }
 
+.nohover:hover {
+	pointer-events: none;
+}
+
 .nav li a {
 	display: block;
 	color: black;
@@ -146,7 +132,6 @@ tr {
 }
 
 .nav li a:hover:not(.active) {
-	/* background-color: #262626; */
 	background-color: #555555;
 	color: white;
 }
@@ -171,14 +156,10 @@ tr {
 	min-height: 70vh;
 }
 
-
 /** /Title Toolbar **/
 .title-toolbar {
 	padding-bottom: 10px;
 }
-
-/** Sidebar **/
-/** /Sidebar **/
 
 /** custom buttons **/
 .blank {
@@ -206,15 +187,17 @@ a {
 }
 /** /links **/
 
-.title {
-}
-
 #bottom {
 	margin-top: 55vh;
+	position: fixed;
 }
 
 #search-table {
 	overflow-y: scroll;
 	max-height: 50vh;
+    min-height: 50vh;
 }
 
+.list-group-item {
+	cursor: pointer;
+}
