@@ -57,10 +57,6 @@ export class PolicyComponent implements OnInit {
       }
     );
   }
-  fileUpload(file) {
-    console.log(file);
-    this.readFile(file[0]);
-  }
 
   downloadClick() {
     console.log(this.selectedPolicy);
@@ -112,7 +108,8 @@ export class PolicyComponent implements OnInit {
 
   onFileUpload(event) {
     this.selectedFile = event.target.files[0];
-    if (this.selectedFile.type === "text/plain") {
+    if (this.selectedFile.name.split('.')[this.selectedFile.name.split('.').length - 1] == "rtf" ||
+        this.selectedFile.name.split('.')[this.selectedFile.name.split('.').length - 1] == "txt") {
       console.log("File valid!");
       let yes = confirm(`Do you want to upload ${this.selectedFile.name}?`);
       if (yes) {
