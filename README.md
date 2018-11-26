@@ -30,9 +30,11 @@ Now that you have NodeJS, you can use it to automatically install all of the dep
 ```
 cd server
 npm install
-node server.js
+MONGOCON={your_database_connection_string} node server.js
 cd ..
 ```
+
+In this case, the database connection string is a secure string that the Express server uses to connect to the cloud hosted database. Ask the administrators of the website for connection string.
 
 #### Angular Server
 For the Angular Server, you need to install its dependencies in the same manner as the Express server. Running the server is also the same as the Express server.
@@ -40,8 +42,9 @@ For the Angular Server, you need to install its dependencies in the same manner 
 ```
 cd gt-athletics
 npm install
-node app.js
+ng serve
 ```
+
 ## Release Notes
 ### New Features
 #### Website
