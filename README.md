@@ -40,3 +40,24 @@ cd gt-athletics
 npm install
 node app.js
 ```
+## Release Notes
+### New Features
+#### Website
+* Home page that greets the users and provides links that takes them to specific, featured policies.
+* Table of contents that allows users to see the policies and select a policy to view.
+* Editor that allows users to make changes to a policy they are viewing. This includes functionality that allows them to format their text with rich text.
+* Upload button that allows users to upload a policy that is stored on their system.
+* Search modal that provides a dynamic search bar to allow users to filter and choose a policy to edit.
+* Contact page that provides information about how to contact administrators associated with the athletics department policy website. The page also provides links that bring a user to their email client ready to draft an email to the selected administrator.
+* Angular service that dynamically handles pulling data from the backend and updating the website's internal data structures that track the user's working data set. This is how the page can load data without a loading screen because it is asynchronous and communicates with most of the functionality of the user interface.
+
+#### Backend Services
+* Cloud hosted database that provides global access to the information and policies accumulated over the use of the website.
+* REST API that provides secure access to the data stored in the database. This allows clients to communicate with the HTTP standard rather than making obscure database transactions manually.
+* PDF conversion done in the backend. This allows users to write text and later have it display as a PDF or to upload a PDF and then later edit the policy as text in the frontend's editor.
+
+### Bug Fixes
+Because this is the first release of this product, there are no bug fixes.
+
+### Known Bugs and Defects
+* Uploading unnecessarily large files has undefined behavior due to the nature of the backend. This bug is due to the cloud database solution used and could be fixed by the provider, Mongo Atlas, in the future.
