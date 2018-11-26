@@ -15,7 +15,7 @@ You will also need git to download the code that is hosted in this repository:
 
 [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-The installation process is designed with a unix style shell in mind, so for Windows deployment be sure to install Git Bash in order to run the installation commands that follow.
+The installation process is designed with a unix style shell in mind, so for Windows deployment be sure to install Git Bash (included in the Windows install of Git) in order to run the installation commands that follow.
 
 ### Getting the code
 Now that you have Git, you can install the code and enter the main directory by doing the following: 
