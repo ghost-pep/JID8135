@@ -45,6 +45,8 @@ npm install
 ng serve
 ```
 
+Now, the server will provide a link in its output to see the website in your browser.
+
 ## Release Notes
 ### New Features
 #### Website
