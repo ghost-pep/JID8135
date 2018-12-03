@@ -74,7 +74,7 @@ db.once('open', function() {
 		});
 
     router.route('/policy/pdf')
-        //adds a pdf policy
+    	//adds a pdf policy
         .post(function(req, res) {
 			File.write(
 				{filename: req.body.filename,
@@ -92,7 +92,7 @@ db.once('open', function() {
         });
 
 	router.route('/policy/pdf/:pdf_id')
-                // gets a pdf policy
+		// gets a pdf policy
 		.get(function(req, res) {
 			File.readById(
 				req.params.pdf_id,
@@ -104,7 +104,7 @@ db.once('open', function() {
 			})
 		})
 
-                //deletes a pdf policy
+		//deletes a pdf policy
 		.delete(function(req, res) {
 			File.unlinkById(
 				req.params.pdf_id,
@@ -117,7 +117,7 @@ db.once('open', function() {
 		});
 
 	router.route('/policy/raw/:raw_id')
-                //returns a single policy
+		//returns a single policy
 		.get(function(req, res) {
 			Raw.findById(
 				req.params.raw_id,
@@ -130,7 +130,7 @@ db.once('open', function() {
 		})
 
 
-                //deletes a single policy
+		//deletes a single policy
 		.delete(function(req, res) {
 			Raw.remove({
 				_id: req.params.raw_id
@@ -143,7 +143,7 @@ db.once('open', function() {
 		});
 
 	router.route('/policy/raw/title/:title')
-                //gets the title of a policy
+		//gets the title of a policy
 		.get(function(req, res) {
 			Raw.find( { title: req.params.title }, function (err, products) {
 				if (err)
@@ -155,7 +155,7 @@ db.once('open', function() {
 
 
 	router.route('/policy/raw/all')
-                //returns all of the policies
+		//returns all of the policies
 		.get(function(req, res) {
 			Raw.find(function (err, products) {
 				if (err)
