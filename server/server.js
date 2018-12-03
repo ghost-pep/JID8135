@@ -11,6 +11,7 @@ var mongoose   = require('mongoose');
 var fs		   = require('fs');
 var Raw		   = require('./model/raw.js');
 
+//get the connection string for our data store
 var con_str = process.env.MONGOCON;
 if (!con_str) {
 	console.log("No connection string provided in env MONGOCON");
@@ -73,9 +74,8 @@ db.once('open', function() {
 		});
 
     router.route('/policy/pdf')
+        //adds a pdf policy
         .post(function(req, res) {
-			//TODO: check if it is actually a pdf
-			// or not if we are lazy lmao
 			File.write(
 				{filename: req.body.filename,
 				contentType: 'pdf'},
@@ -92,6 +92,7 @@ db.once('open', function() {
         });
 
 	router.route('/policy/pdf/:pdf_id')
+                // gets a pdf policy
 		.get(function(req, res) {
 			File.readById(
 				req.params.pdf_id,
@@ -103,6 +104,7 @@ db.once('open', function() {
 			})
 		})
 
+                //deletes a pdf policy
 		.delete(function(req, res) {
 			File.unlinkById(
 				req.params.pdf_id,
@@ -115,6 +117,7 @@ db.once('open', function() {
 		});
 
 	router.route('/policy/raw/:raw_id')
+                //returns a single policy
 		.get(function(req, res) {
 			Raw.findById(
 				req.params.raw_id,
@@ -127,6 +130,7 @@ db.once('open', function() {
 		})
 
 
+                //deletes a single policy
 		.delete(function(req, res) {
 			Raw.remove({
 				_id: req.params.raw_id
@@ -139,6 +143,7 @@ db.once('open', function() {
 		});
 
 	router.route('/policy/raw/title/:title')
+                //gets the title of a policy
 		.get(function(req, res) {
 			Raw.find( { title: req.params.title }, function (err, products) {
 				if (err)
@@ -150,6 +155,7 @@ db.once('open', function() {
 
 
 	router.route('/policy/raw/all')
+                //returns all of the policies
 		.get(function(req, res) {
 			Raw.find(function (err, products) {
 				if (err)
@@ -158,12 +164,6 @@ db.once('open', function() {
 				    res.json(products);
 			});
 		});
-
-	//router.get('/policy/add'......
-	//router.get('/policy/delete'......
-	//router.get('/policy/download'......
-
-	// more routes for our API will happen here
 
 	// REGISTER OUR ROUTES -------------------------------
 	// all of our routes will be prefixed with /api
